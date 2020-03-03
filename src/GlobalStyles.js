@@ -19,3 +19,4 @@ export default createGlobalStyle`
     font-size: 1em;
   }
 `
+//input und co existieren noch nicht
