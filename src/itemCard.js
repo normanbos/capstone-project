@@ -35,7 +35,7 @@ const CardContainer = styled.div`
 `
 
 const CardDetails = styled.div`
-  margin: 10px;
+  margin: 0;
   background: #fbf9fb;
-  padding: 10px 20px;
+  padding: 0;
 `
