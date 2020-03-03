@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Items from './itemList'
+import Items from './components/itemList'
 
 export default function App() {
   return (
