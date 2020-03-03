@@ -10,21 +10,21 @@ export default function App() {
 
   function Items() {
     const items = [
-      { Gegenstand: 'Bohrmaschine', Name: 'Fritz' },
-      { Gegenstand: 'Backform', Name: 'Hans' },
-      { Gegenstand: 'Fahrrad', Name: 'Klaus' },
-      { Gegenstand: 'Buch', Name: 'Anna' },
-      { Gegenstand: 'CD', Name: 'Marie' },
-      { Gegenstand: 'noch ein Buch', Name: 'Jan' },
+      { thing: 'Bohrmaschine', borrower: 'Fritz' },
+      { thing: 'Backform', borrower: 'Hans' },
+      { thing: 'Fahrrad', borrower: 'Klaus' },
+      { thing: 'Buch', borrower: 'Anna' },
+      { thing: 'CD', borrower: 'Marie' },
+      { thing: 'noch ein Buch', borrower: 'Jan' },
     ]
     return (
       <div>
         {items.map(item => {
           return (
-            <SingleCard>
-              <p style={{ fontWeight: 'bold' }}>{item.Gegenstand}</p>
-              <p>ausgeliehen an: {item.Name}</p>
-            </SingleCard>
+            <ItemCard>
+              <p style={{ fontWeight: 'bold' }}>{item.thing}</p>
+              <p>ausgeliehen an: {item.borrower}</p>
+            </ItemCard>
           )
         })}
       </div>
@@ -32,16 +32,16 @@ export default function App() {
   }
 }
 
-const SingleCard = styled.div`
-  margin: 5px;
-  background: white;
-  padding: 20px;
+const ItemCard = styled.div`
+  margin: 10px;
+  background: #fbf9fb;
+  padding: 10px 20px;
   border-radius: 5px;
   box-shadow: 0 10px 10px #0002;
 `
 
 const ItemList = styled.section`
-  background: white;
+  background: #263c51;
   padding: 20px;
   border-radius: 5px;
   overflow-y: auto;
@@ -51,6 +51,7 @@ const ItemList = styled.section`
 
 const AppGrid = styled.div`
   display: grid;
+  background: #7fb8b6;
   grid-template-rows: auto 48px;
   position: fixed;
   left: 0;
