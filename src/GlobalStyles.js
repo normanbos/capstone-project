@@ -14,9 +14,4 @@ export default createGlobalStyle`
     overflow: hidden;
     height: 100vh;
   }
-
-  input, button, textarea {
-    font-size: 1em;
-  }
 `
-//input und co existieren noch nicht
