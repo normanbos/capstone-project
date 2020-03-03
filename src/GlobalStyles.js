@@ -7,7 +7,7 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    background: #eee;
+    background: #7fb8b6;
     font-family: sans-serif;
     font-size: 18px;
     line-height: 1.4;
@@ -19,3 +19,4 @@ export default createGlobalStyle`
     font-size: 1em;
   }
 `
+//input und co existieren noch nicht

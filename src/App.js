@@ -21,6 +21,7 @@ export default function App() {
       <div>
         {items.map(item => {
           return (
+            // zwei returns
             <ItemCard>
               <p style={{ fontWeight: 'bold' }}>{item.thing}</p>
               <p>ausgeliehen an: {item.borrower}</p>
@@ -48,6 +49,7 @@ const ItemList = styled.section`
   autoscroll: true;
   scroll-behavior: smooth;
 `
+//check autoscroll
 
 const AppGrid = styled.div`
   display: grid;
