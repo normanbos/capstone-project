@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
-import Items from './itemList'
+import ItemList from './components/itemList'
 
 export default function App() {
   return (
     <AppGrid>
-      <ItemList autoScroll="true">{Items()}</ItemList>
+      <StyledItemList autoScroll="true">{ItemList()}</StyledItemList>
     </AppGrid>
   )
 }
 
-const ItemList = styled.section`
+const StyledItemList = styled.section`
   background: #263c51;
   padding: 20px;
   border-radius: 5px;
