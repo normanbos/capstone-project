@@ -11,16 +11,15 @@ export default function App() {
 }
 
 const StyledItemList = styled.section`
-  background: #263c51;
+  background: #151611;
   padding: 20px;
-  border-radius: 5px;
   overflow-y: auto;
 `
 
 const AppGrid = styled.div`
   display: grid;
-  background: #7fb8b6;
-  grid-template-rows: auto 48px;
+  background: #234653;
+  grid-template-rows: auto 90px;
   position: fixed;
   left: 0;
   right: 0;

@@ -8,7 +8,7 @@ export default createGlobalStyle`
   body {
     margin: 0;
     background: #7fb8b6;
-    font-family: sans-serif;
+    font-family: 'Fira Mono', monospace;
     font-size: 18px;
     line-height: 1.4;
     overflow: hidden;

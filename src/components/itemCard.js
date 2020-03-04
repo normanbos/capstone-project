@@ -1,41 +1,42 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useToggle } from 'react-hooks-lib'
 
 export default function ItemCard({ item }) {
-  const [isDetailsVisible, setIsDetailsVisible] = useState(false)
   const { on, toggle } = useToggle(false)
 
   return (
-    <CardContainer onClick={toggleDetails}>
-      <p style={{ fontWeight: 'bold' }}>{item.thing}</p>
-      <p>ausgeliehen an: {item.borrower}</p>
-      <CardDetails>
-        {on && (
-          <>
-            <p>am: {item.borrowdate}</p>
-            <p>kommt zurück am: {item.duedate}</p>
-          </>
-        )}
-      </CardDetails>
+    <CardContainer onClick={toggle}>
+      <StyledContent style={{ fontWeight: 'bold' }}>{item.thing}</StyledContent>
+      <StyledContent>verliehen an: {item.borrower}</StyledContent>
+
+      {on && (
+        <CardDetails>
+          <StyledContent>am: {item.borrowdate}</StyledContent>
+          <StyledContent>zurück am: {item.duedate}</StyledContent>
+        </CardDetails>
+      )}
     </CardContainer>
   )
-  function toggleDetails() {
-    setIsDetailsVisible && setIsDetailsVisible(!isDetailsVisible)
-    toggle()
-  }
 }
 
 const CardContainer = styled.div`
   margin: 10px;
-  background: #fbf9fb;
-  padding: 10px 20px;
-  border-radius: 5px;
+  font-size: 1.2rem;
+  color: 151611;
+  background: #52b2a9;
+  padding: 5px 10px;
+  border-radius: 12px;
   box-shadow: 0 10px 10px #0002;
 `
 
 const CardDetails = styled.div`
   margin: 0;
-  background: #fbf9fb;
   padding: 0;
+  font-size: 1.2rem;
+`
+
+const StyledContent = styled.p`
+  margin: 0;
+  padding: 2px;
 `
