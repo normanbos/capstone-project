@@ -6,6 +6,9 @@ export default function App() {
   return (
     <AppGrid>
       <StyledItemList autoScroll="true">{ItemList()}</StyledItemList>
+      <footer>
+        <button>Create new item</button>
+      </footer>
     </AppGrid>
   )
 }
