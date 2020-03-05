@@ -23,7 +23,7 @@ export default function ItemCard({ item }) {
 const CardContainer = styled.div`
   margin: 10px;
   font-size: 1.2rem;
-  color: 151611;
+  color: #151611;
   background: #52b2a9;
   padding: 5px 10px;
   border-radius: 12px;
