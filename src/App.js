@@ -63,7 +63,7 @@ const StyledModal = {
   content: {
     borderRadius: '12px',
     background: '#52b2a9',
-    top: '25%',
+    top: '40%',
     left: '50%',
     minWidth: '19em',
     right: 'auto',
