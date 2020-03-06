@@ -100,6 +100,9 @@ const StyledRoundButton = styled.button`
   height: 4rem;
   width: 4rem;
   display: inline-block;
+  focus {
+    outline: none;
+  }
   margin: 0.8rem;
   padding: 0;
   border: none;
