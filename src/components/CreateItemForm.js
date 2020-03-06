@@ -14,54 +14,64 @@ export default function Form({ onSubmit }) {
 
   return (
     <CardForm id="cardForm" onSubmit={handleSubmit}>
-      <label htmlFor="item">Item</label>
-      <input
-        autoFocus
-        type="text"
-        name="item"
-        id="item"
-        value={itemState.item}
-        onChange={handleItemChange}
-      />
+      <LabelStyled htmlFor="item">
+        Item
+        <input
+          autoFocus
+          type="text"
+          name="item"
+          id="item"
+          value={itemState.item}
+          onChange={handleItemChange}
+        />
+      </LabelStyled>
 
-      <label htmlFor="borrower">Lent to</label>
-      <input
-        type="text"
-        name="borrower"
-        id="borrower"
-        value={itemState.borrower}
-        onChange={handleItemChange}
-      />
+      <LabelStyled htmlFor="borrower">
+        Lent to
+        <input
+          type="text"
+          name="borrower"
+          id="borrower"
+          value={itemState.borrower}
+          onChange={handleItemChange}
+        />
+      </LabelStyled>
 
-      <label htmlFor="contact">Contact</label>
-      <input
-        type="email"
-        name="contact"
-        id="contact"
-        placeholder="E-Mail"
-        value={itemState.contact}
-        onChange={handleItemChange}
-      />
+      <LabelStyled htmlFor="contact">
+        Contact
+        <input
+          type="email"
+          name="contact"
+          id="contact"
+          placeholder="E-Mail"
+          value={itemState.contact}
+          onChange={handleItemChange}
+        />
+      </LabelStyled>
 
-      <label htmlFor="borrowdate">Borrowed on</label>
-      <input
-        type="date"
-        name="borrowdate"
-        id="borrowdate"
-        placeholder="TT.MM.JJJ"
-        value={itemState.borrowdate}
-        onChange={handleItemChange}
-      />
+      <LabelStyled htmlFor="borrowdate">
+        Borrowed on
+        <input
+          type="date"
+          name="borrowdate"
+          id="borrowdate"
+          placeholder="TT.MM.JJJ"
+          value={itemState.borrowdate}
+          onChange={handleItemChange}
+        />
+      </LabelStyled>
 
-      <label htmlFor="duedate">Due on</label>
-      <input
-        type="date"
-        name="duedate"
-        id="duedate"
-        placeholder="TT.MM.JJJ"
-        value={itemState.duedate}
-        onChange={handleItemChange}
-      />
+      <LabelStyled htmlFor="duedate">
+        Due on
+        <input
+          type="date"
+          name="duedate"
+          id="duedate"
+          placeholder="TT.MM.JJJ"
+          value={itemState.duedate}
+          onChange={handleItemChange}
+        />
+      </LabelStyled>
     </CardForm>
   )
 
@@ -80,6 +90,13 @@ export default function Form({ onSubmit }) {
 
 const CardForm = styled.form`
   display: grid;
-  gap: 10px;
+  gap: 5px;
   padding: 0;
+`
+const LabelStyled = styled.label`
+  display: flex;
+  gap: 8px;
+`
+const InputStyled = styled.input`
+  margin: 0;
 `
