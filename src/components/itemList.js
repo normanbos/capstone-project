@@ -1,11 +1,7 @@
 import React from 'react'
-import itemData from '../itemData'
 import ItemCard from './itemCard'
-import { saveToLocal, loadFromLocal } from '../utils/utils'
 
-export default function ItemList() {
-  let items = loadFromLocal('itemData') || [itemData]
-  saveToLocal('itemData', itemData)
+export default function ItemList({ items }) {
   return (
     <>
       {items.map(item => (

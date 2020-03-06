@@ -7,7 +7,7 @@ export default function ItemCard({ item }) {
 
   return (
     <CardContainer onClick={toggle}>
-      <StyledContent style={{ fontWeight: 'bold' }}>{item.thing}</StyledContent>
+      <StyledContent style={{ fontWeight: 'bold' }}>{item.item}</StyledContent>
       <StyledContent>verliehen an: {item.borrower}</StyledContent>
 
       {on && (
