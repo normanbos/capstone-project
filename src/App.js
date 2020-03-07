@@ -9,7 +9,7 @@ import { saveToLocal, loadFromLocal } from './utils/utils'
 Modal.setAppElement(document.getElementById('root'))
 
 export default function App() {
-  const [itemData, setItemData] = useState(loadFromLocal('itemData'))
+  const [itemData, setItemData] = useState(loadFromLocal('itemData') || [])
   const [modalIsOpen, setIsOpen] = useState(false)
   function openModal() {
     setIsOpen(true)
@@ -27,6 +27,7 @@ export default function App() {
   function addItem(item) {
     const newItems = [item, ...itemData]
     setItemData(newItems)
+    saveToLocal('itemData', newItems)
     closeModal()
   }
 
