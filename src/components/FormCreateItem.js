@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-export default function Form({ onSubmit }) {
+export default function FormCreateItem({ onSubmit }) {
   const [itemState, setItemState] = useState({
     item: '',
     borrower: '',
@@ -96,7 +96,4 @@ const CardForm = styled.form`
 const LabelStyled = styled.label`
   display: flex;
   gap: 8px;
-`
-const InputStyled = styled.input`
-  margin: 0;
 `

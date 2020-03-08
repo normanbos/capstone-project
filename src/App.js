@@ -1,16 +1,45 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
-import ItemList from './components/itemList'
-import Modal from 'react-modal'
 import { IoIosAddCircle } from 'react-icons/io'
-import Form from './components/CreateItemForm'
-import { saveToLocal, loadFromLocal } from './utils/utils'
+import Modal from 'react-modal'
+import styled from 'styled-components'
+import FormCreateItem from './components/FormCreateItem'
+import ItemList from './components/ItemList'
+import { loadFromLocal, saveToLocal } from './utils/utils'
 
 Modal.setAppElement(document.getElementById('root'))
 
 export default function App() {
   const [itemData, setItemData] = useState(loadFromLocal('itemData') || [])
   const [modalIsOpen, setIsOpen] = useState(false)
+
+  return (
+    <AppGrid>
+      <StyledItemList autoScroll="true">
+        <ItemList items={itemData} />
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          shouldCloseOnOverlayClick={false}
+          style={StyledModal}
+        >
+          <FormCreateItem onSubmit={addItem} />
+          <StyledFooter>
+            <StyledButton onClick={closeModal}>Cancel</StyledButton>
+            <StyledButton type="submit" form="cardForm">
+              Save
+            </StyledButton>
+          </StyledFooter>
+        </Modal>
+      </StyledItemList>
+      <StyledFooter>
+        <StyledRoundButton onClick={openModal}>
+          <IoIosAddCircle />
+        </StyledRoundButton>
+      </StyledFooter>
+    </AppGrid>
+  )
+
   function openModal() {
     setIsOpen(true)
   }
@@ -30,34 +59,6 @@ export default function App() {
     saveToLocal('itemData', newItems)
     closeModal()
   }
-
-  return (
-    <AppGrid>
-      <StyledItemList autoScroll="true">
-        <ItemList items={itemData} />
-        <Modal
-          isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
-          onRequestClose={closeModal}
-          shouldCloseOnOverlayClick={false}
-          style={StyledModal}
-        >
-          <Form onSubmit={addItem} />
-          <StyledFooter>
-            <StyledButton onClick={closeModal}>Cancel</StyledButton>
-            <StyledButton type="submit" form="cardForm">
-              Save
-            </StyledButton>
-          </StyledFooter>
-        </Modal>
-      </StyledItemList>
-      <StyledFooter>
-        <StyledRoundButton onClick={openModal}>
-          <IoIosAddCircle />
-        </StyledRoundButton>
-      </StyledFooter>
-    </AppGrid>
-  )
 }
 
 const StyledModal = {
