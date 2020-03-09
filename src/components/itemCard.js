@@ -11,7 +11,7 @@ export default function ItemCard({ item }) {
       <StyledContent style={{ fontWeight: 'bold' }}>{item.item}</StyledContent>
       {on || (
         <StyledContentSmall>
-          an: {item.borrower} • <CountdownTimer itemDuedate={item.duedate} />
+          an: {item.borrower} • <CountdownTimer itemDueDate={item.duedate} />
         </StyledContentSmall>
       )}
 
