@@ -1,5 +1,5 @@
 import React from 'react'
-import ItemCard from './ItemCard'
+import ItemCard from './ItemCardCamel'
 
 export default function ItemList({ items }) {
   return (

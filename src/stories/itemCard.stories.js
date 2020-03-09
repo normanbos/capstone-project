@@ -1,9 +1,9 @@
 import React from 'react'
-import ItemCard from '../components/itemCard'
+import ItemCard from '../components/ItemCard'
 
 export default {
   title: 'Components/Card',
   component: ItemCard,
 }
 
-export const Card = item => <ItemCard item={item} />
+export const DefaultCard = () => <ItemCard />
