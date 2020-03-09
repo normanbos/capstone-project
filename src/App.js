@@ -3,7 +3,7 @@ import { IoIosAddCircle } from 'react-icons/io'
 import Modal from 'react-modal'
 import styled from 'styled-components'
 import FormCreateItem from './components/FormCreateItem'
-import ItemList from './components/ItemListCamel'
+import ItemList from './components/ItemList'
 import { loadFromLocal, saveToLocal } from './utils/utils'
 
 Modal.setAppElement(document.getElementById('root'))
