@@ -3,23 +3,23 @@ import { useToggle } from 'react-hooks-lib'
 import styled from 'styled-components'
 import CountdownTimer from './CountdownTimer'
 
-export default function ItemCard({ item }) {
+export default function ItemCard({ item, borrower, borrowdate, duedate }) {
   const { on, toggle } = useToggle(false)
 
   return (
     <CardContainer onClick={toggle}>
-      <StyledContent style={{ fontWeight: 'bold' }}>{item.item}</StyledContent>
+      <StyledContent style={{ fontWeight: 'bold' }}>{item}</StyledContent>
       {on || (
         <StyledContentSmall>
-          an: {item.borrower} • <CountdownTimer itemDueDate={item.duedate} />
+          an: {borrower} • <CountdownTimer itemDueDate={duedate} />
         </StyledContentSmall>
       )}
 
       {on && (
         <CardDetails>
-          <StyledContent>verliehen an: {item.borrower}</StyledContent>
-          <StyledContent>am: {item.borrowdate}</StyledContent>
-          <StyledContent>zurück am: {item.duedate}</StyledContent>
+          <StyledContent>verliehen an: {borrower}</StyledContent>
+          <StyledContent>am: {borrowdate}</StyledContent>
+          <StyledContent>zurück am: {duedate}</StyledContent>
         </CardDetails>
       )}
     </CardContainer>
