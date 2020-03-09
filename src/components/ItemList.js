@@ -6,7 +6,7 @@ export default function ItemList({ items }) {
     <>
       {items.map(item => (
         <ItemCard
-          item={item.item}
+          title={item.title}
           borrower={item.borrower}
           borrowdate={item.borrowdate}
           duedate={item.duedate}

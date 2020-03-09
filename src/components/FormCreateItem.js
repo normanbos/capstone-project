@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export default function FormCreateItem({ onSubmit }) {
   const [itemState, setItemState] = useState({
-    item: '',
+    title: '',
     borrower: '',
     contact: '',
     borrowdate: '',
@@ -14,14 +14,14 @@ export default function FormCreateItem({ onSubmit }) {
 
   return (
     <CardForm id="cardForm" onSubmit={handleSubmit}>
-      <LabelStyled htmlFor="item">
+      <LabelStyled htmlFor="title">
         Item
         <input
           autoFocus
           type="text"
-          name="item"
-          id="item"
-          value={itemState.item}
+          name="title"
+          id="title"
+          value={itemState.title}
           onChange={handleItemChange}
         />
       </LabelStyled>

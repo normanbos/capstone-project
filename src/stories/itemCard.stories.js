@@ -13,7 +13,7 @@ export default {
 
 export const DefaultCard = () => (
   <ItemCard
-    item={'Ding'}
+    title={'Ding'}
     borrower={'Jemand'}
     borrowdate={'2020-02-02'}
     duedate={'2020-03-15'}

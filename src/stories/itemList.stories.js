@@ -15,19 +15,19 @@ export const DefaultList = () => (
   <ItemList
     items={[
       {
-        item: 'Ding',
+        title: 'Ding',
         borrower: 'Jemand',
         borrowdate: '2020-02-02',
         duedate: '2020-03-15',
       },
       {
-        item: 'anderes Ding',
+        title: 'anderes Ding',
         borrower: 'Jemand anders',
         borrowdate: '2020-02-02',
         duedate: '2020-03-15',
       },
       {
-        item: 'überfälliges Ding',
+        title: 'überfälliges Ding',
         borrower: 'Jemand anders',
         borrowdate: '2020-02-02',
         duedate: '2020-02-15',
