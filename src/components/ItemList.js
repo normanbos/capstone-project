@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemCard from './ItemCard'
+import styled from 'styled-components'
 
 export default function ItemList({ items }) {
   return (
@@ -15,3 +16,8 @@ export default function ItemList({ items }) {
     </>
   )
 }
+
+export const StyledItemList = styled.section`
+  background: #151611;
+  padding: 20px;
+`
