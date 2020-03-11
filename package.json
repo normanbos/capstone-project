@@ -14,11 +14,14 @@
     "react-modal": "3.11.2",
     "react-scripts": "3.4.0",
     "react-spring": "8.0.27",
-    "styled-components": "5.0.1"
+    "react-transition-group": "4.3.0",
+    "styled-components": "5.0.1",
+    "uuid": "7.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "npm run build && firebase deploy --only hosting",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",

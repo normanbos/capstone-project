@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { v4 } from 'uuid'
 
 export default function CountdownTimer({ itemDueDate }) {
   const dueDate = itemDueDate
@@ -31,7 +32,7 @@ export default function CountdownTimer({ itemDueDate }) {
     }
 
     timerComponents.push(
-      <span>
+      <span key={v4()}>
         {timeLeft[interval]} {interval}{' '}
       </span>
     )
