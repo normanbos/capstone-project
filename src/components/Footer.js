@@ -24,7 +24,7 @@ export const StyledRoundButton = styled.button`
 `
 
 export const StyledFooter = styled.footer`
-  position: fixed;
-  display: flex;
-  justify-content: space-evenly;
+  position: relative;
+  text-align: center;
+  width: 100%;
 `

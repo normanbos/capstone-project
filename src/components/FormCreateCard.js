@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { v4 } from 'uuid'
 
 export function FormCreateItem({ onSubmit, cancelHandle }) {
   const [itemState, setItemState] = useState({
@@ -8,9 +9,8 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
     contact: '',
     borrowdate: '',
     duedate: '',
+    id: v4(),
   })
-
-  console.log(itemState)
 
   return (
     <FormContainer>

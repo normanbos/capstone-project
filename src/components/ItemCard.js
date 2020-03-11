@@ -1,19 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useToggle } from 'react-hooks-lib'
 import styled from 'styled-components'
 import CountdownTimer from './CountdownTimer'
 
 export default function ItemCard({ title, borrower, borrowdate, duedate }) {
   const { on, toggle } = useToggle(false)
+  const [isToggled, setToggled] = useState(false)
 
   return (
-    <CardContainer onClick={toggle}>
+    <div onClick={handleToggle} className="card-container">
       <StyledContent style={{ fontWeight: 'bold' }}>{title}</StyledContent>
-      {on || (
-        <StyledContentSmall>
-          an: {borrower} • <CountdownTimer itemDueDate={duedate} />
-        </StyledContentSmall>
-      )}
+
+      <StyledContentSmall
+        style={{ visibility: !isToggled ? 'visible' : 'hidden' }}
+      >
+        an: {borrower} • <CountdownTimer itemDueDate={duedate} />
+      </StyledContentSmall>
 
       {on && (
         <CardDetails>
@@ -22,19 +24,15 @@ export default function ItemCard({ title, borrower, borrowdate, duedate }) {
           <StyledContent>zurück am: {duedate}</StyledContent>
         </CardDetails>
       )}
-    </CardContainer>
+    </div>
   )
-}
 
-const CardContainer = styled.div`
-  margin: 10px;
-  font-size: 1.2rem;
-  color: #151611;
-  background: #52b2a9;
-  padding: 5px 10px;
-  border-radius: 12px;
-  box-shadow: 0 10px 10px #0002;
-`
+  function handleToggle() {
+    const toggleTrueFalse = () => setToggled(!isToggled)
+    toggleTrueFalse()
+    toggle()
+  }
+}
 
 const CardDetails = styled.div`
   margin: 0;

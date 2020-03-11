@@ -7,13 +7,14 @@ import ItemList, { StyledItemList } from './components/ItemList'
 import { loadFromLocal, saveToLocal } from './utils/utils'
 import { FormCreateItem } from './components/FormCreateCard'
 import { StyledRoundButton, StyledFooter } from './components/Footer'
+import './styles.css'
 
 export default function App() {
   const [itemData, setItemData] = useState(loadFromLocal('itemData') || [])
   const { on, toggle } = useToggle(false)
   const [isToggled, setToggled] = useState(false)
 
-  //TODO: automatic scroll to top when Form is toggled. Background color transition when card is created. Disable "add" button when the form is toggled
+  //TODO: automatic scroll to top when Form is toggled.
 
   return (
     <AppGrid>
@@ -36,11 +37,9 @@ export default function App() {
   function handleToggle() {
     const toggleTrueFalse = () => setToggled(!isToggled)
     toggleTrueFalse()
-    //FIXME: scrolling funktioniert noch nicht
+    //FIXME: scrolling to top funktioniert noch nicht
     window.scroll(0, 0)
     toggle()
-    console.log(isToggled)
-    console.log(toggle)
   }
 
   function addItem(item) {
