@@ -1,16 +1,3 @@
-.testbutton {
-  font-size: 3em;
-  font-family: inherit;
-  border: none;
-  background-color: #33ae74;
-  padding: 0.5em 0.75em;
-  transition: background-color 0.5s ease-out;
-}
-
-.testbutton.is-active {
-  background-color: #1ce;
-}
-
 .card-container {
   margin: 10px;
   font-size: 1.2rem;
@@ -30,10 +17,6 @@
   to {
     background-color: #52b2a9;
   }
-}
-
-.card-container.is-created {
-  background: #52b2a9;
 }
 
 .card-details {

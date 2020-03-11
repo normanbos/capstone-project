@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useToggle } from 'react-hooks-lib'
 import styled from 'styled-components'
 import { IoIosAddCircle } from 'react-icons/io'
-// import FormCreateItem from './components/FormCreateItem'
 import ItemList, { StyledItemList } from './components/ItemList'
 import { loadFromLocal, saveToLocal } from './utils/utils'
 import { FormCreateItem } from './components/FormCreateCard'
@@ -13,8 +12,6 @@ export default function App() {
   const [itemData, setItemData] = useState(loadFromLocal('itemData') || [])
   const { on, toggle } = useToggle(false)
   const [isToggled, setToggled] = useState(false)
-
-  //TODO: automatic scroll to top when Form is toggled.
 
   return (
     <AppGrid>
@@ -37,7 +34,6 @@ export default function App() {
   function handleToggle() {
     const toggleTrueFalse = () => setToggled(!isToggled)
     toggleTrueFalse()
-    //FIXME: scrolling to top funktioniert noch nicht
     window.scroll(0, 0)
     toggle()
   }
