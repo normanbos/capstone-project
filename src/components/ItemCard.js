@@ -3,10 +3,14 @@ import { useToggle } from 'react-hooks-lib'
 import styled from 'styled-components'
 import CountdownTimer from './CountdownTimer'
 
-export default function ItemCard(
-  { title, borrower, borrowdate, duedate },
-  { deleteItem }
-) {
+export default function ItemCard({
+  title,
+  borrower,
+  borrowdate,
+  duedate,
+  deleteItem,
+  item,
+}) {
   const { on, toggle } = useToggle(false)
   const [isToggled, setToggled] = useState(false)
 
@@ -14,8 +18,11 @@ export default function ItemCard(
     <div onClick={handleToggle} className="card-container">
       <StyledContent style={{ fontWeight: 'bold' }}>
         {title}{' '}
-        <DeleteButton style={{ visibility: isToggled ? 'visible' : 'hidden' }}>
-          X
+        <DeleteButton
+          style={{ visibility: isToggled ? 'visible' : 'hidden' }}
+          onClick={() => deleteItem(item)}
+        >
+          &times;
         </DeleteButton>
       </StyledContent>
 
@@ -59,7 +66,7 @@ const StyledContentSmall = styled.p`
   padding: 2px;
 `
 
-const DeleteButton = styled.span`
+const DeleteButton = styled.button`
   display: block;
   float: right;
   font-size: 1.2rem;
