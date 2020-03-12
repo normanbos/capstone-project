@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useToggle } from 'react-hooks-lib'
 import styled from 'styled-components'
 import { IoIosAddCircle } from 'react-icons/io'
-// import FormCreateItem from './components/FormCreateItem'
 import ItemList, { StyledItemList } from './components/ItemList'
 import { loadFromLocal, saveToLocal } from './utils/utils'
 import { FormCreateItem } from './components/FormCreateCard'
@@ -14,15 +13,13 @@ export default function App() {
   const { on, toggle } = useToggle(false)
   const [isToggled, setToggled] = useState(false)
 
-  //TODO: automatic scroll to top when Form is toggled.
-
   return (
     <AppGrid>
       <StyledItemList style={{ overflowY: isToggled ? 'hidden' : 'auto' }}>
         {on && (
           <FormCreateItem cancelHandle={handleToggle} onSubmit={addItem} />
         )}
-        <ItemList items={itemData} />
+        <ItemList items={itemData} deleteItem={deleteItem} />
       </StyledItemList>
       <StyledFooter>
         <StyledRoundButton
@@ -37,7 +34,6 @@ export default function App() {
   function handleToggle() {
     const toggleTrueFalse = () => setToggled(!isToggled)
     toggleTrueFalse()
-    //FIXME: scrolling to top funktioniert noch nicht
     window.scroll(0, 0)
     toggle()
   }
@@ -47,6 +43,16 @@ export default function App() {
     setItemData(newItems)
     saveToLocal('itemData', newItems)
     handleToggle()
+  }
+
+  function deleteItem(item) {
+    const index = itemData.indexOf(item)
+    const updateItem = [
+      ...itemData.slice(0, index),
+      ...itemData.slice(index + 1),
+    ]
+    setItemData(updateItem)
+    saveToLocal('itemData', updateItem)
   }
 }
 

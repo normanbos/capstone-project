@@ -2,9 +2,7 @@ import React from 'react'
 import ItemCard from './ItemCard'
 import styled from 'styled-components'
 
-export default function ItemList({ items }) {
-  console.log(items)
-
+export default function ItemList({ items, deleteItem, item }) {
   return (
     <>
       {items.map(item => (
@@ -14,6 +12,8 @@ export default function ItemList({ items }) {
           borrowdate={item.borrowdate}
           duedate={item.duedate}
           key={item.id}
+          deleteItem={deleteItem}
+          item={item}
         ></ItemCard>
       ))}
     </>
