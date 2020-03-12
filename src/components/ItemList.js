@@ -2,7 +2,7 @@ import React from 'react'
 import ItemCard from './ItemCard'
 import styled from 'styled-components'
 
-export default function ItemList({ items, deleteItem, item }) {
+export default function ItemList({ items, deleteItem }) {
   return (
     <>
       {items.map(item => (
