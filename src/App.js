@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { useToggle } from 'react-hooks-lib'
 import styled from 'styled-components'
 import { IoIosAddCircle } from 'react-icons/io'
-import ItemList, { StyledItemList } from './components/ItemList'
+import ItemList from './components/ItemList'
 import { loadFromLocal, saveToLocal } from './utils/utils'
 import { FormCreateItem } from './components/FormCreateCard'
-import { StyledRoundButton, StyledFooter } from './components/Footer'
+import { RoundButton, AppFooter } from './components/AppFooter'
 import './styles.css'
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <AppGrid>
-      <StyledItemList style={{ overflowY: isToggled ? 'hidden' : 'auto' }}>
+      <ItemListContainer style={{ overflowY: isToggled ? 'hidden' : 'auto' }}>
         {on && (
           <FormCreateItem cancelHandle={handleToggle} onSubmit={addItem} />
         )}
@@ -24,15 +24,15 @@ export default function App() {
           deleteItem={deleteItem}
           editItem={editItem}
         />
-      </StyledItemList>
-      <StyledFooter>
-        <StyledRoundButton
+      </ItemListContainer>
+      <AppFooter>
+        <RoundButton
           disabled={isToggled ? 'disabled' : ''}
           onClick={handleToggle}
         >
           <IoIosAddCircle />
-        </StyledRoundButton>
-      </StyledFooter>
+        </RoundButton>
+      </AppFooter>
     </AppGrid>
   )
   function handleToggle() {
@@ -81,4 +81,9 @@ const AppGrid = styled.div`
   top: 0;
   bottom: 0;
   height: 100%;
+`
+
+const ItemListContainer = styled.section`
+  background: #151611;
+  padding: 20px;
 `

@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Button } from './Buttons'
 import { CardForm, Label, Input } from './Form'
+import { CardFooter } from './Card'
 import CountdownTimer from './CountdownTimer'
-import { FaTrashAlt, FaSave } from 'react-icons/fa'
+import { FaTrashAlt, FaSave, FaEdit, FaReply } from 'react-icons/fa'
 
 export default function ItemCard({
   title,
@@ -28,100 +29,102 @@ export default function ItemCard({
 
   return (
     <div className="card-container">
-      <SmallCardContainer
+      <CardContainer
         pointer-events={toggleEdit ? 'none' : 'auto'}
         onClick={handleToggle}
         style={{ display: !isToggled & !toggleEdit ? 'block' : 'none' }}
       >
-        <StyledContent style={{ fontWeight: 'bold' }}>{title} </StyledContent>
-        <StyledContentSmall>
+        <CardContent style={{ fontWeight: 'bold' }}>{title} </CardContent>
+        <CardContentSmall>
           an: {borrower} • <CountdownTimer itemDueDate={duedate} />
-        </StyledContentSmall>
-      </SmallCardContainer>
+        </CardContentSmall>
+      </CardContainer>
 
-      <BigCardContainer
+      <CardContainer
         pointer-events={toggleEdit ? 'none' : 'auto'}
         onClick={handleToggle}
         style={{ display: isToggled & !toggleEdit ? 'block' : 'none' }}
       >
         <CardDetails>
           <>
-            <StyledContent style={{ fontWeight: 'bold' }}>
-              {title}
-            </StyledContent>
-            <StyledContent>verliehen an {borrower}</StyledContent>
-            <StyledContent>am {borrowdate}</StyledContent>
-            <StyledContent>zurück am {duedate}</StyledContent>
+            <CardContent style={{ fontWeight: 'bold' }}>{title}</CardContent>
+            <CardContent>verliehen an {borrower}</CardContent>
+            <CardContentSmall>&#40;{contact}&#41;</CardContentSmall>
+            <CardContent>am {borrowdate}</CardContent>
+            <CardContent>zurück am {duedate}</CardContent>
           </>
         </CardDetails>
-        <StyledFooter>
-          <Button onClick={handleEditToggle}>Edit</Button>
+        <CardFooter>
+          <Button onClick={handleEditToggle}>
+            <FaEdit />
+          </Button>
           <Button onClick={() => deleteItem(item)}>
             <FaTrashAlt />
           </Button>
-        </StyledFooter>
-      </BigCardContainer>
+        </CardFooter>
+      </CardContainer>
 
-      <EditCardForm style={{ display: toggleEdit ? 'block' : 'none' }}>
-        <div>
-          <CardForm>
-            <Label htmlFor="title">Gegenstand</Label>
-            <Input
-              autoFocus
-              type="text"
-              name="title"
-              id="title"
-              value={itemState.title}
-              onChange={handleItemChange}
-            />
+      <CardContainer style={{ display: toggleEdit ? 'block' : 'none' }}>
+        <CardForm>
+          <Label htmlFor="title">Gegenstand</Label>
+          <Input
+            autoFocus
+            type="text"
+            name="title"
+            id="title"
+            value={itemState.title}
+            onChange={handleItemChange}
+          />
 
-            <Label htmlFor="borrower">verliehen an</Label>
-            <Input
-              type="text"
-              name="borrower"
-              id="borrower"
-              value={itemState.borrower}
-              onChange={handleItemChange}
-            />
+          <Label htmlFor="borrower">verliehen an</Label>
+          <Input
+            type="text"
+            name="borrower"
+            id="borrower"
+            value={itemState.borrower}
+            onChange={handleItemChange}
+          />
 
-            <Label htmlFor="contact">Contact</Label>
-            <Input
-              type="email"
-              name="contact"
-              id="contact"
-              placeholder="E-Mail"
-              value={itemState.contact}
-              onChange={handleItemChange}
-            />
+          <Label htmlFor="contact">Kontakt</Label>
+          <Input
+            type="email"
+            name="contact"
+            id="contact"
+            placeholder="E-Mail"
+            value={itemState.contact}
+            onChange={handleItemChange}
+          />
 
-            <Label htmlFor="borrowdate">am</Label>
-            <Input
-              type="date"
-              name="borrowdate"
-              id="borrowdate"
-              placeholder="TT.MM.JJJ"
-              value={itemState.borrowdate}
-              onChange={handleItemChange}
-            />
+          <Label htmlFor="borrowdate">am</Label>
+          <Input
+            type="date"
+            name="borrowdate"
+            id="borrowdate"
+            placeholder="TT.MM.JJJ"
+            value={itemState.borrowdate}
+            onChange={handleItemChange}
+          />
 
-            <Label htmlFor="duedate">zurück am</Label>
-            <Input
-              type="date"
-              name="duedate"
-              id="duedate"
-              placeholder="TT.MM.JJJ"
-              value={itemState.duedate}
-              onChange={handleItemChange}
-            />
-          </CardForm>
-        </div>
-        <StyledFooter>
-          <Button onClick={handleEditToggle}>Cancel</Button>
+          <Label htmlFor="duedate">zurück am</Label>
+          <Input
+            type="date"
+            name="duedate"
+            id="duedate"
+            placeholder="TT.MM.JJJ"
+            value={itemState.duedate}
+            onChange={handleItemChange}
+          />
+        </CardForm>
+
+        <CardFooter>
+          <Button onClick={handleEditToggle}>
+            <FaReply />
+          </Button>
           <Button onClick={handleEdit}>
             <FaSave />
           </Button>
-        </StyledFooter>
-      </EditCardForm>
+        </CardFooter>
+      </CardContainer>
     </div>
   )
 
@@ -155,33 +158,18 @@ const CardDetails = styled.div`
   font-size: 1.2rem;
 `
 
-const StyledContent = styled.div`
+const CardContent = styled.div`
   margin: 0;
-  padding: 5px 10px;
+  padding: 2px;
 `
 
-const StyledContentSmall = styled.p`
+const CardContentSmall = styled.p`
   margin: 0;
   font-size: 0.9rem;
   padding: 2px;
 `
 
-const SmallCardContainer = styled.div`
+const CardContainer = styled.div`
   margin: 0;
   padding: 0;
-`
-
-const BigCardContainer = styled.div`
-  margin: 0;
-  padding: 0;
-`
-
-const EditCardForm = styled.div`
-  margin: 0;
-  padding: 0;
-`
-
-const StyledFooter = styled.footer`
-  display: flex;
-  justify-content: space-evenly;
 `

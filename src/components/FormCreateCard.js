@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Button } from './Buttons'
 import { CardForm, Label, Input } from './Form'
+import { CardFooter } from './Card'
+import { FaSave, FaReply } from 'react-icons/fa'
 import { v4 } from 'uuid'
 
 export function FormCreateItem({ onSubmit, cancelHandle }) {
@@ -66,12 +68,14 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
       </CardForm>
-      <StyledFooter>
-        <Button onClick={cancelHandle}>Cancel</Button>
-        <Button type="submit" form="cardForm">
-          Save
+      <CardFooter>
+        <Button onClick={cancelHandle}>
+          <FaReply />
         </Button>
-      </StyledFooter>
+        <Button type="submit" form="cardForm">
+          <FaSave />
+        </Button>
+      </CardFooter>
     </CardContainer>
   )
 
@@ -95,9 +99,4 @@ const CardContainer = styled.div`
   background: #cb7350;
   padding: 5px;
   border-radius: 12px;
-`
-
-const StyledFooter = styled.footer`
-  display: flex;
-  justify-content: space-evenly;
 `
