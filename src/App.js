@@ -19,7 +19,11 @@ export default function App() {
         {on && (
           <FormCreateItem cancelHandle={handleToggle} onSubmit={addItem} />
         )}
-        <ItemList items={itemData} deleteItem={deleteItem} />
+        <ItemList
+          items={itemData}
+          deleteItem={deleteItem}
+          editItem={editItem}
+        />
       </StyledItemList>
       <StyledFooter>
         <StyledRoundButton
@@ -49,6 +53,17 @@ export default function App() {
     const index = itemData.indexOf(item)
     const updateItem = [
       ...itemData.slice(0, index),
+      ...itemData.slice(index + 1),
+    ]
+    setItemData(updateItem)
+    saveToLocal('itemData', updateItem)
+  }
+
+  function editItem(itemState, item) {
+    const index = itemData.indexOf(item)
+    const updateItem = [
+      ...itemData.slice(0, index),
+      itemState,
       ...itemData.slice(index + 1),
     ]
     setItemData(updateItem)

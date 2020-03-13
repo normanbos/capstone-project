@@ -13,66 +13,56 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
   })
 
   return (
-    <FormContainer>
+    <CardContainer>
       <CardForm id="cardForm" onSubmit={handleSubmit}>
-        <LabelStyled htmlFor="title">
-          Item
-          <input
-            autoFocus
-            type="text"
-            name="title"
-            id="title"
-            value={itemState.title}
-            onChange={handleItemChange}
-          />
-        </LabelStyled>
+        <LabelStyled htmlFor="title">Item</LabelStyled>
+        <StyledInput
+          autoFocus
+          type="text"
+          name="title"
+          id="title"
+          value={itemState.title}
+          onChange={handleItemChange}
+        />
 
-        <LabelStyled htmlFor="borrower">
-          Lent to
-          <input
-            type="text"
-            name="borrower"
-            id="borrower"
-            value={itemState.borrower}
-            onChange={handleItemChange}
-          />
-        </LabelStyled>
+        <LabelStyled htmlFor="borrower">Lent to</LabelStyled>
+        <StyledInput
+          type="text"
+          name="borrower"
+          id="borrower"
+          value={itemState.borrower}
+          onChange={handleItemChange}
+        />
 
-        <LabelStyled htmlFor="contact">
-          Contact
-          <input
-            type="email"
-            name="contact"
-            id="contact"
-            placeholder="E-Mail"
-            value={itemState.contact}
-            onChange={handleItemChange}
-          />
-        </LabelStyled>
+        <LabelStyled htmlFor="contact">Contact</LabelStyled>
+        <StyledInput
+          type="email"
+          name="contact"
+          id="contact"
+          placeholder="E-Mail"
+          value={itemState.contact}
+          onChange={handleItemChange}
+        />
 
-        <LabelStyled htmlFor="borrowdate">
-          Borrowed on
-          <input
-            type="date"
-            name="borrowdate"
-            id="borrowdate"
-            placeholder="TT.MM.JJJ"
-            value={itemState.borrowdate}
-            onChange={handleItemChange}
-          />
-        </LabelStyled>
+        <LabelStyled htmlFor="borrowdate">Borrowed on</LabelStyled>
+        <StyledInput
+          type="date"
+          name="borrowdate"
+          id="borrowdate"
+          placeholder="TT.MM.JJJ"
+          value={itemState.borrowdate}
+          onChange={handleItemChange}
+        />
 
-        <LabelStyled htmlFor="duedate">
-          Due on
-          <input
-            type="date"
-            name="duedate"
-            id="duedate"
-            placeholder="TT.MM.JJJ"
-            value={itemState.duedate}
-            onChange={handleItemChange}
-          />
-        </LabelStyled>
+        <LabelStyled htmlFor="duedate">Due on</LabelStyled>
+        <StyledInput
+          type="date"
+          name="duedate"
+          id="duedate"
+          placeholder="TT.MM.JJJ"
+          value={itemState.duedate}
+          onChange={handleItemChange}
+        />
       </CardForm>
       <StyledFooter>
         <StyledButton onClick={cancelHandle}>Cancel</StyledButton>
@@ -80,7 +70,7 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
           Save
         </StyledButton>
       </StyledFooter>
-    </FormContainer>
+    </CardContainer>
   )
 
   function handleSubmit(event) {
@@ -98,22 +88,21 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
 
 const CardForm = styled.form`
   display: grid;
-  gap: 5px;
-  padding: 0;
+  grid-template-columns: 1fr 2fr;
+  max-width: auto;
 `
 const LabelStyled = styled.label`
-  display: flex;
-  gap: 8px;
+  grid-column: 1 / 2;
+  padding: 0.5em 0.5em 0.5em 0;
 `
 
-const FormContainer = styled.div`
+const CardContainer = styled.div`
   margin: 10px;
   font-size: 1.2rem;
   color: #151611;
   background: #cb7350;
-  padding: 5px 10px;
+  padding: 5px;
   border-radius: 12px;
-  box-shadow: 0 10px 10px #0002;
 `
 
 const StyledButton = styled.button`
@@ -139,4 +128,19 @@ const StyledButton = styled.button`
 const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-evenly;
+`
+
+const StyledInput = styled.input`
+  grid-column: 2 / 3;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 100%;
+  width: auto;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  margin: 5px;
+  padding: 5px 10px;
+  overflow: auto;
 `
