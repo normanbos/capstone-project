@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Button } from './Buttons'
+import { CardForm, Label, Input } from './Form'
 import CountdownTimer from './CountdownTimer'
 import { FaTrashAlt, FaSave } from 'react-icons/fa'
 
@@ -53,18 +55,18 @@ export default function ItemCard({
           </>
         </CardDetails>
         <StyledFooter>
-          <StyledButton onClick={handleEditToggle}>Edit</StyledButton>
-          <StyledButton onClick={() => deleteItem(item)}>
+          <Button onClick={handleEditToggle}>Edit</Button>
+          <Button onClick={() => deleteItem(item)}>
             <FaTrashAlt />
-          </StyledButton>
+          </Button>
         </StyledFooter>
       </BigCardContainer>
 
       <EditCardForm style={{ display: toggleEdit ? 'block' : 'none' }}>
         <div>
           <CardForm>
-            <LabelStyled htmlFor="title">Gegenstand</LabelStyled>
-            <StyledInput
+            <Label htmlFor="title">Gegenstand</Label>
+            <Input
               autoFocus
               type="text"
               name="title"
@@ -73,8 +75,8 @@ export default function ItemCard({
               onChange={handleItemChange}
             />
 
-            <LabelStyled htmlFor="borrower">verliehen an</LabelStyled>
-            <StyledInput
+            <Label htmlFor="borrower">verliehen an</Label>
+            <Input
               type="text"
               name="borrower"
               id="borrower"
@@ -82,8 +84,8 @@ export default function ItemCard({
               onChange={handleItemChange}
             />
 
-            <LabelStyled htmlFor="contact">Contact</LabelStyled>
-            <StyledInput
+            <Label htmlFor="contact">Contact</Label>
+            <Input
               type="email"
               name="contact"
               id="contact"
@@ -92,8 +94,8 @@ export default function ItemCard({
               onChange={handleItemChange}
             />
 
-            <LabelStyled htmlFor="borrowdate">am</LabelStyled>
-            <StyledInput
+            <Label htmlFor="borrowdate">am</Label>
+            <Input
               type="date"
               name="borrowdate"
               id="borrowdate"
@@ -102,8 +104,8 @@ export default function ItemCard({
               onChange={handleItemChange}
             />
 
-            <LabelStyled htmlFor="duedate">zurück am</LabelStyled>
-            <StyledInput
+            <Label htmlFor="duedate">zurück am</Label>
+            <Input
               type="date"
               name="duedate"
               id="duedate"
@@ -114,10 +116,10 @@ export default function ItemCard({
           </CardForm>
         </div>
         <StyledFooter>
-          <StyledButton onClick={handleEditToggle}>Cancel</StyledButton>
-          <StyledButton onClick={handleEdit}>
+          <Button onClick={handleEditToggle}>Cancel</Button>
+          <Button onClick={handleEdit}>
             <FaSave />
-          </StyledButton>
+          </Button>
         </StyledFooter>
       </EditCardForm>
     </div>
@@ -162,51 +164,6 @@ const StyledContentSmall = styled.p`
   margin: 0;
   font-size: 0.9rem;
   padding: 2px;
-`
-
-const StyledButton = styled.button`
-  width: 8rem;
-  height: 3rem;
-  display: inline-block;
-  border: none;
-  border-radius: 12px;
-  padding: 1rem 2rem;
-  margin: 0.5rem;
-  text-decoration: none;
-  background: #e5c486;
-  font-family: 'Fira Mono', monospace;
-  font-size: 18px;
-  line-height: 1;
-  cursor: pointer;
-  text-align: center;
-  transition: background 250ms ease-in-out, transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-`
-
-const LabelStyled = styled.label`
-  grid-column: 1 / 2;
-  padding: 0.5em 0.5em 0.5em 0;
-`
-
-const StyledInput = styled.input`
-  grid-column: 2 / 3;
-  font-family: inherit;
-  font-size: 100%;
-  width: auto;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  margin: 5px;
-  padding: 5px 10px;
-  overflow: auto;
-`
-
-const CardForm = styled.form`
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  max-width: auto;
 `
 
 const SmallCardContainer = styled.div`

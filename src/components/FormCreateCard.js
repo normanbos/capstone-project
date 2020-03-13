@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Button } from './Buttons'
+import { CardForm, Label, Input } from './Form'
 import { v4 } from 'uuid'
 
 export function FormCreateItem({ onSubmit, cancelHandle }) {
@@ -15,8 +17,8 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
   return (
     <CardContainer>
       <CardForm id="cardForm" onSubmit={handleSubmit}>
-        <LabelStyled htmlFor="title">Item</LabelStyled>
-        <StyledInput
+        <Label htmlFor="title">Item</Label>
+        <Input
           autoFocus
           type="text"
           name="title"
@@ -25,8 +27,8 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <LabelStyled htmlFor="borrower">Lent to</LabelStyled>
-        <StyledInput
+        <Label htmlFor="borrower">Lent to</Label>
+        <Input
           type="text"
           name="borrower"
           id="borrower"
@@ -34,8 +36,8 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <LabelStyled htmlFor="contact">Contact</LabelStyled>
-        <StyledInput
+        <Label htmlFor="contact">Contact</Label>
+        <Input
           type="email"
           name="contact"
           id="contact"
@@ -44,8 +46,8 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <LabelStyled htmlFor="borrowdate">Borrowed on</LabelStyled>
-        <StyledInput
+        <Label htmlFor="borrowdate">Borrowed on</Label>
+        <Input
           type="date"
           name="borrowdate"
           id="borrowdate"
@@ -54,8 +56,8 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <LabelStyled htmlFor="duedate">Due on</LabelStyled>
-        <StyledInput
+        <Label htmlFor="duedate">Due on</Label>
+        <Input
           type="date"
           name="duedate"
           id="duedate"
@@ -65,10 +67,10 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
         />
       </CardForm>
       <StyledFooter>
-        <StyledButton onClick={cancelHandle}>Cancel</StyledButton>
-        <StyledButton type="submit" form="cardForm">
+        <Button onClick={cancelHandle}>Cancel</Button>
+        <Button type="submit" form="cardForm">
           Save
-        </StyledButton>
+        </Button>
       </StyledFooter>
     </CardContainer>
   )
@@ -86,16 +88,6 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
   }
 }
 
-const CardForm = styled.form`
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  max-width: auto;
-`
-const LabelStyled = styled.label`
-  grid-column: 1 / 2;
-  padding: 0.5em 0.5em 0.5em 0;
-`
-
 const CardContainer = styled.div`
   margin: 10px;
   font-size: 1.2rem;
@@ -105,42 +97,7 @@ const CardContainer = styled.div`
   border-radius: 12px;
 `
 
-const StyledButton = styled.button`
-  width: 8rem;
-  height: 3rem;
-  display: inline-block;
-  border: none;
-  border-radius: 12px;
-  padding: 1rem 2rem;
-  margin: 0.5rem;
-  text-decoration: none;
-  background: #e5c486;
-  font-family: 'Fira Mono', monospace;
-  font-size: 18px;
-  line-height: 1;
-  cursor: pointer;
-  text-align: center;
-  transition: background 250ms ease-in-out, transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-`
-
 const StyledFooter = styled.footer`
   display: flex;
   justify-content: space-evenly;
-`
-
-const StyledInput = styled.input`
-  grid-column: 2 / 3;
-  box-sizing: border-box;
-  font-family: inherit;
-  font-size: 100%;
-  width: auto;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: white;
-  margin: 5px;
-  padding: 5px 10px;
-  overflow: auto;
 `
