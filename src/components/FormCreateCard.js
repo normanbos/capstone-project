@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Button } from './Buttons'
+import { CardForm, Label, Input } from './Form'
+import { CardFooter } from './Card'
+import { FaSave, FaReply } from 'react-icons/fa'
 import { v4 } from 'uuid'
 
 export function FormCreateItem({ onSubmit, cancelHandle }) {
@@ -13,74 +17,87 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
   })
 
   return (
-    <FormContainer>
+    <CardContainer>
       <CardForm id="cardForm" onSubmit={handleSubmit}>
-        <LabelStyled htmlFor="title">
-          Item
-          <input
-            autoFocus
-            type="text"
-            name="title"
-            id="title"
-            value={itemState.title}
-            onChange={handleItemChange}
-          />
-        </LabelStyled>
+        <Label htmlFor="title">
+          {' '}
+          <small>
+            <i>Gegenstand</i>
+          </small>
+        </Label>
+        <Input
+          autoFocus
+          type="text"
+          name="title"
+          id="title"
+          value={itemState.title}
+          onChange={handleItemChange}
+        />
 
-        <LabelStyled htmlFor="borrower">
-          Lent to
-          <input
-            type="text"
-            name="borrower"
-            id="borrower"
-            value={itemState.borrower}
-            onChange={handleItemChange}
-          />
-        </LabelStyled>
+        <Label htmlFor="borrower">
+          <small>
+            <i>verliehen an</i>
+          </small>
+        </Label>
+        <Input
+          type="text"
+          name="borrower"
+          id="borrower"
+          value={itemState.borrower}
+          onChange={handleItemChange}
+        />
 
-        <LabelStyled htmlFor="contact">
-          Contact
-          <input
-            type="email"
-            name="contact"
-            id="contact"
-            placeholder="E-Mail"
-            value={itemState.contact}
-            onChange={handleItemChange}
-          />
-        </LabelStyled>
+        <Label htmlFor="contact">
+          <small>
+            <i>Kontakt</i>
+          </small>
+        </Label>
+        <Input
+          type="email"
+          name="contact"
+          id="contact"
+          placeholder="E-Mail"
+          value={itemState.contact}
+          onChange={handleItemChange}
+        />
 
-        <LabelStyled htmlFor="borrowdate">
-          Borrowed on
-          <input
-            type="date"
-            name="borrowdate"
-            id="borrowdate"
-            placeholder="TT.MM.JJJ"
-            value={itemState.borrowdate}
-            onChange={handleItemChange}
-          />
-        </LabelStyled>
+        <Label htmlFor="borrowdate">
+          <small>
+            <i>am</i>
+          </small>
+        </Label>
+        <Input
+          type="date"
+          name="borrowdate"
+          id="borrowdate"
+          placeholder="TT.MM.JJJ"
+          value={itemState.borrowdate}
+          onChange={handleItemChange}
+        />
 
-        <LabelStyled htmlFor="duedate">
-          Due on
-          <input
-            type="date"
-            name="duedate"
-            id="duedate"
-            placeholder="TT.MM.JJJ"
-            value={itemState.duedate}
-            onChange={handleItemChange}
-          />
-        </LabelStyled>
+        <Label htmlFor="duedate">
+          <small>
+            <i>zurück am</i>
+          </small>
+        </Label>
+        <Input
+          type="date"
+          name="duedate"
+          id="duedate"
+          placeholder="TT.MM.JJJ"
+          value={itemState.duedate}
+          onChange={handleItemChange}
+        />
       </CardForm>
-      <StyledFooter>
-        <StyledButton onClick={cancelHandle}>Cancel</StyledButton>
-        <StyledButton type="submit" form="cardForm">
-          Save
-        </StyledButton>
-      </StyledFooter>
-    </FormContainer>
+      <CardFooter>
+        <Button onClick={cancelHandle}>
+          <FaReply />
+        </Button>
+        <Button type="submit" form="cardForm">
+          <FaSave />
+        </Button>
+      </CardFooter>
+    </CardContainer>
   )
 
   function handleSubmit(event) {
@@ -96,47 +113,11 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
   }
 }
 
-const CardForm = styled.form`
-  display: grid;
-  gap: 5px;
-  padding: 0;
-`
-const LabelStyled = styled.label`
-  display: flex;
-  gap: 8px;
-`
-
-const FormContainer = styled.div`
+const CardContainer = styled.div`
   margin: 10px;
   font-size: 1.2rem;
   color: #151611;
   background: #cb7350;
-  padding: 5px 10px;
+  padding: 5px;
   border-radius: 12px;
-  box-shadow: 0 10px 10px #0002;
-`
-
-const StyledButton = styled.button`
-  width: 8rem;
-  height: 3rem;
-  display: inline-block;
-  border: none;
-  border-radius: 12px;
-  padding: 1rem 2rem;
-  margin: 0.5rem;
-  text-decoration: none;
-  background: #e5c486;
-  font-family: 'Fira Mono', monospace;
-  font-size: 18px;
-  line-height: 1;
-  cursor: pointer;
-  text-align: center;
-  transition: background 250ms ease-in-out, transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-`
-
-const StyledFooter = styled.footer`
-  display: flex;
-  justify-content: space-evenly;
 `

@@ -40,7 +40,9 @@ export default function CountdownTimer({ itemDueDate }) {
 
   return (
     <>
-      <span>fällig: </span>
+      <span>
+        <i>fällig: </i>
+      </span>
       {timerComponents.length ? (
         timerComponents
       ) : (

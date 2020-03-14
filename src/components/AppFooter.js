@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
-export const StyledRoundButton = styled.button`
+export const RoundButton = styled.button`
   height: 4rem;
   width: 4rem;
   display: inline-block;
@@ -23,7 +23,7 @@ export const StyledRoundButton = styled.button`
   -moz-appearance: none;
 `
 
-export const StyledFooter = styled.footer`
+export const AppFooter = styled.footer`
   position: relative;
   text-align: center;
   width: 100%;
