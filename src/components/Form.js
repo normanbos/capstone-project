@@ -19,7 +19,6 @@ export const Input = styled.input`
   width: auto;
   border: 2px solid #ccc;
   border-radius: 4px;
-  background-color: white;
   margin: 5px;
   padding: 5px 10px;
   overflow: auto;
