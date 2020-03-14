@@ -16,8 +16,8 @@ export default function ItemCard({
   item,
   editItem,
 }) {
-  const [isToggled, setToggled] = useState(false)
-  const [toggleEdit, setToggleEdit] = useState(false)
+  const [isDetailsToggled, setIsDetailsToggled] = useState(false)
+  const [isEditToggled, setIsEditToggled] = useState(false)
   const [itemState, setItemState] = useState({
     title,
     borrower,
@@ -30,28 +30,54 @@ export default function ItemCard({
   return (
     <div className="card-container">
       <CardContainer
-        pointer-events={toggleEdit ? 'none' : 'auto'}
+        pointer-events={isEditToggled ? 'none' : 'auto'}
         onClick={handleToggle}
-        style={{ display: !isToggled & !toggleEdit ? 'block' : 'none' }}
+        style={{
+          display: !isDetailsToggled & !isEditToggled ? 'block' : 'none',
+        }}
       >
-        <CardContent style={{ fontWeight: 'bold' }}>{title} </CardContent>
+        <CardContent>
+          <b>{title}</b>
+        </CardContent>
         <CardContentSmall>
-          an: {borrower} • <CountdownTimer itemDueDate={duedate} />
+          <i>bei: </i>
+          {borrower} • <CountdownTimer itemDueDate={duedate} />
         </CardContentSmall>
       </CardContainer>
 
       <CardContainer
-        pointer-events={toggleEdit ? 'none' : 'auto'}
+        pointer-events={isEditToggled ? 'none' : 'auto'}
         onClick={handleToggle}
-        style={{ display: isToggled & !toggleEdit ? 'block' : 'none' }}
+        style={{
+          display: isDetailsToggled & !isEditToggled ? 'block' : 'none',
+        }}
       >
         <CardDetails>
           <>
-            <CardContent style={{ fontWeight: 'bold' }}>{title}</CardContent>
-            <CardContent>verliehen an {borrower}</CardContent>
-            <CardContentSmall>&#40;{contact}&#41;</CardContentSmall>
-            <CardContent>am {borrowdate}</CardContent>
-            <CardContent>zurück am {duedate}</CardContent>
+            <CardContent>
+              <b>{title}</b>
+            </CardContent>
+            <CardContent>
+              <small>
+                <i>verliehen an </i>
+              </small>
+              {borrower}
+            </CardContent>
+            <CardContentSmall>
+              <sup>&#40;{contact}&#41;</sup>
+            </CardContentSmall>
+            <CardContent>
+              <small>
+                <i>am </i>
+              </small>
+              {borrowdate}
+            </CardContent>
+            <CardContent>
+              <small>
+                <i>zurück am </i>
+              </small>
+              {duedate}
+            </CardContent>
           </>
         </CardDetails>
         <CardFooter>
@@ -64,9 +90,13 @@ export default function ItemCard({
         </CardFooter>
       </CardContainer>
 
-      <CardContainer style={{ display: toggleEdit ? 'block' : 'none' }}>
+      <CardContainer style={{ display: isEditToggled ? 'block' : 'none' }}>
         <CardForm>
-          <Label htmlFor="title">Gegenstand</Label>
+          <Label htmlFor="title">
+            <small>
+              <i>Gegenstand</i>
+            </small>
+          </Label>
           <Input
             autoFocus
             type="text"
@@ -76,7 +106,11 @@ export default function ItemCard({
             onChange={handleItemChange}
           />
 
-          <Label htmlFor="borrower">verliehen an</Label>
+          <Label htmlFor="borrower">
+            <small>
+              <i>verliehen an</i>
+            </small>
+          </Label>
           <Input
             type="text"
             name="borrower"
@@ -85,7 +119,11 @@ export default function ItemCard({
             onChange={handleItemChange}
           />
 
-          <Label htmlFor="contact">Kontakt</Label>
+          <Label htmlFor="contact">
+            <small>
+              <i>Kontakt</i>
+            </small>
+          </Label>
           <Input
             type="email"
             name="contact"
@@ -95,7 +133,11 @@ export default function ItemCard({
             onChange={handleItemChange}
           />
 
-          <Label htmlFor="borrowdate">am</Label>
+          <Label htmlFor="borrowdate">
+            <small>
+              <i>am</i>
+            </small>
+          </Label>
           <Input
             type="date"
             name="borrowdate"
@@ -105,7 +147,11 @@ export default function ItemCard({
             onChange={handleItemChange}
           />
 
-          <Label htmlFor="duedate">zurück am</Label>
+          <Label htmlFor="duedate">
+            <small>
+              <i>zurück am</i>
+            </small>
+          </Label>
           <Input
             type="date"
             name="duedate"
@@ -129,12 +175,12 @@ export default function ItemCard({
   )
 
   function handleToggle() {
-    const toggleTrueFalse = () => setToggled(!isToggled)
+    const toggleTrueFalse = () => setIsDetailsToggled(!isDetailsToggled)
     toggleTrueFalse()
   }
 
   function handleEditToggle() {
-    const toggleTrueFalse = () => setToggleEdit(!toggleEdit)
+    const toggleTrueFalse = () => setIsEditToggled(!isEditToggled)
     toggleTrueFalse()
   }
 

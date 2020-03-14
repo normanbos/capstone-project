@@ -19,7 +19,12 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
   return (
     <CardContainer>
       <CardForm id="cardForm" onSubmit={handleSubmit}>
-        <Label htmlFor="title">Item</Label>
+        <Label htmlFor="title">
+          {' '}
+          <small>
+            <i>Gegenstand</i>
+          </small>
+        </Label>
         <Input
           autoFocus
           type="text"
@@ -29,7 +34,11 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="borrower">Lent to</Label>
+        <Label htmlFor="borrower">
+          <small>
+            <i>verliehen an</i>
+          </small>
+        </Label>
         <Input
           type="text"
           name="borrower"
@@ -38,7 +47,11 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="contact">Contact</Label>
+        <Label htmlFor="contact">
+          <small>
+            <i>Kontakt</i>
+          </small>
+        </Label>
         <Input
           type="email"
           name="contact"
@@ -48,7 +61,11 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="borrowdate">Borrowed on</Label>
+        <Label htmlFor="borrowdate">
+          <small>
+            <i>am</i>
+          </small>
+        </Label>
         <Input
           type="date"
           name="borrowdate"
@@ -58,7 +75,11 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="duedate">Due on</Label>
+        <Label htmlFor="duedate">
+          <small>
+            <i>zurück am</i>
+          </small>
+        </Label>
         <Input
           type="date"
           name="duedate"
