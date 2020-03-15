@@ -15,9 +15,7 @@ export default function ItemCard({
   deleteItem,
   item,
   editItem,
-  handleDetailsToggle,
 }) {
-  const [toggle, setToggle] = useDetailsToggler()
   const [isDetailsToggled, setIsDetailsToggled] = useState(false)
   const [isEditToggled, setIsEditToggled] = useState(false)
   const [itemState, setItemState] = useState({
@@ -33,7 +31,7 @@ export default function ItemCard({
     <div className="card-container">
       <CardContainer
         pointer-events={isEditToggled ? 'none' : 'auto'}
-        onClick={handleDetailsToggle}
+        onClick={handleToggle}
         style={{
           display: !isDetailsToggled & !isEditToggled ? 'block' : 'none',
         }}
@@ -49,7 +47,7 @@ export default function ItemCard({
 
       <CardContainer
         pointer-events={isEditToggled ? 'none' : 'auto'}
-        onClick={handleDetailsToggle}
+        onClick={handleToggle}
         style={{
           display: isDetailsToggled & !isEditToggled ? 'block' : 'none',
         }}
@@ -176,7 +174,7 @@ export default function ItemCard({
     </div>
   )
 
-  function handleDetailsToggle() {
+  function handleToggle() {
     const toggleTrueFalse = () => setIsDetailsToggled(!isDetailsToggled)
     toggleTrueFalse()
   }
