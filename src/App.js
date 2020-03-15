@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useToggle } from 'react-hooks-lib'
-import styled from 'styled-components'
 import { IoIosAddCircle } from 'react-icons/io'
-import ItemList from './components/ItemList'
-import { loadFromLocal, saveToLocal } from './utils/utils'
-import { FormCreateItem } from './components/FormCreateCard'
-import { RoundButton, AppFooter } from './components/AppFooter'
+import styled from 'styled-components'
+import { AppFooter, RoundButton } from './components/AppFooter'
+import { FormCreateCard } from './components/formCreateCard'
+import ItemList from './components/itemList'
 import './styles.css'
+import { loadFromLocal, saveToLocal } from './utils/utils'
 
 export default function App() {
   const [itemData, setItemData] = useState(loadFromLocal('itemData') || [])
@@ -17,7 +17,7 @@ export default function App() {
     <AppGrid>
       <ItemListContainer style={{ overflowY: isToggled ? 'hidden' : 'auto' }}>
         {on && (
-          <FormCreateItem cancelHandle={handleToggle} onSubmit={addItem} />
+          <FormCreateCard cancelHandle={handleToggle} onSubmit={addItem} />
         )}
         <ItemList
           items={itemData}

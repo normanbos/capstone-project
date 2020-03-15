@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
+import { FaEdit, FaReply, FaSave, FaTrashAlt } from 'react-icons/fa'
 import styled from 'styled-components'
 import { Button } from './Buttons'
-import { CardForm, Label, Input } from './Form'
 import { CardFooter } from './Card'
-import CountdownTimer from './CountdownTimer'
-import { FaTrashAlt, FaSave, FaEdit, FaReply } from 'react-icons/fa'
+import CountdownTimer from './countdownTimer'
+import { CardForm, Input, Label } from './Form'
 
 export default function ItemCard({
   title,
@@ -15,7 +15,9 @@ export default function ItemCard({
   deleteItem,
   item,
   editItem,
+  handleDetailsToggle,
 }) {
+  const [toggle, setToggle] = useDetailsToggler()
   const [isDetailsToggled, setIsDetailsToggled] = useState(false)
   const [isEditToggled, setIsEditToggled] = useState(false)
   const [itemState, setItemState] = useState({
@@ -31,7 +33,7 @@ export default function ItemCard({
     <div className="card-container">
       <CardContainer
         pointer-events={isEditToggled ? 'none' : 'auto'}
-        onClick={handleToggle}
+        onClick={handleDetailsToggle}
         style={{
           display: !isDetailsToggled & !isEditToggled ? 'block' : 'none',
         }}
@@ -47,7 +49,7 @@ export default function ItemCard({
 
       <CardContainer
         pointer-events={isEditToggled ? 'none' : 'auto'}
-        onClick={handleToggle}
+        onClick={handleDetailsToggle}
         style={{
           display: isDetailsToggled & !isEditToggled ? 'block' : 'none',
         }}
@@ -174,7 +176,7 @@ export default function ItemCard({
     </div>
   )
 
-  function handleToggle() {
+  function handleDetailsToggle() {
     const toggleTrueFalse = () => setIsDetailsToggled(!isDetailsToggled)
     toggleTrueFalse()
   }

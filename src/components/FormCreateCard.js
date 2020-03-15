@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
+import { FaReply, FaSave } from 'react-icons/fa'
 import styled from 'styled-components'
-import { Button } from './Buttons'
-import { CardForm, Label, Input } from './Form'
-import { CardFooter } from './Card'
-import { FaSave, FaReply } from 'react-icons/fa'
 import { v4 } from 'uuid'
+import { Button } from './Buttons'
+import { CardFooter } from './Card'
+import { CardForm, Input, Label } from './Form'
 
-export function FormCreateItem({ onSubmit, cancelHandle }) {
+export function FormCreateCard({ onSubmit, cancelHandle }) {
   const [itemState, setItemState] = useState({
     title: '',
     borrower: '',
@@ -20,7 +20,6 @@ export function FormCreateItem({ onSubmit, cancelHandle }) {
     <CardContainer>
       <CardForm id="cardForm" onSubmit={handleSubmit}>
         <Label htmlFor="title">
-          {' '}
           <small>
             <i>Gegenstand</i>
           </small>
