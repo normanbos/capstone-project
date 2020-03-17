@@ -1,12 +1,13 @@
 import React from 'react'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
-import { Button, RoundButton } from './Buttons'
+import { RoundButton } from './Buttons'
 import {
   CardDetails,
   CardContent,
   CardContentSmall,
   CardContainer,
-  CardFooter,
+  CardHeader,
+  CardHeaderNav,
 } from './Card'
 
 export default function ItemCardDetails({
@@ -31,41 +32,40 @@ export default function ItemCardDetails({
       }}
     >
       <CardDetails>
-        <>
-          <CardContent>
-            <b>{title}</b>
-          </CardContent>
-          <CardContent>
-            <small>
-              <i>verliehen an </i>
-            </small>
-            {borrower}
-          </CardContent>
-          <CardContentSmall>
-            <sup>&#40;{contact}&#41;</sup>
-          </CardContentSmall>
-          <CardContent>
-            <small>
-              <i>am </i>
-            </small>
-            {borrowdate}
-          </CardContent>
-          <CardContent>
-            <small>
-              <i>zurück am </i>
-            </small>
-            {duedate}
-          </CardContent>
-        </>
+        <CardHeader>
+          <b>{title}</b>
+          <CardHeaderNav>
+            <RoundButton onClick={handleEditToggle}>
+              <FaEdit />
+            </RoundButton>
+            <RoundButton onClick={() => deleteItem(item)}>
+              <FaTrashAlt />
+            </RoundButton>
+          </CardHeaderNav>
+        </CardHeader>
+
+        <CardContent>
+          <small>
+            <i>verliehen an </i>
+          </small>
+          {borrower}
+        </CardContent>
+        <CardContentSmall>
+          <sup>&#40;{contact}&#41;</sup>
+        </CardContentSmall>
+        <CardContent>
+          <small>
+            <i>am </i>
+          </small>
+          {borrowdate}
+        </CardContent>
+        <CardContent>
+          <small>
+            <i>zurück am </i>
+          </small>
+          {duedate}
+        </CardContent>
       </CardDetails>
-      <CardFooter>
-        <RoundButton onClick={handleEditToggle}>
-          <FaEdit />
-        </RoundButton>
-        <RoundButton onClick={() => deleteItem(item)}>
-          <FaTrashAlt />
-        </RoundButton>
-      </CardFooter>
     </CardContainer>
   )
 }

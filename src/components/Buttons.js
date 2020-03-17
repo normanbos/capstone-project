@@ -24,7 +24,7 @@ export const RoundButton = styled.div`
   display: inline-block;
   width: 2em;
   height: 2em;
-  margin-right: 1em;
+  margin-left: 0.5em;
   background-color: ${props => props.theme.colors.goldSand};
   border-radius: 50%;
   text-align: center;
@@ -34,7 +34,7 @@ export const RoundButton = styled.div`
     display: inline-block;
     height: 100%;
     vertical-align: middle;
-    margin: 0.5px; /* Adjusts for spacing */
+    margin: 0.4px; /* Adjusts for spacing */
   }
 
   > * {

@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { FaReply, FaSave } from 'react-icons/fa'
-import styled from 'styled-components'
 import { v4 } from 'uuid'
-import { Button } from './Buttons'
-import { CardFooter, CreateCardContainer } from './Card'
+import { RoundButton } from './Buttons'
+import { CreateCardContainer, CardHeader, CardHeaderNav } from './Card'
 import { CardForm, Input, Label } from './Form'
 
 export function FormCreateCard({ onSubmit, cancelHandle }) {
@@ -18,6 +17,17 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
 
   return (
     <CreateCardContainer>
+      <CardHeader>
+        <div></div>
+        <CardHeaderNav>
+          <RoundButton onClick={cancelHandle}>
+            <FaReply />
+          </RoundButton>
+          <RoundButton type="submit" form="cardForm">
+            <FaSave />
+          </RoundButton>
+        </CardHeaderNav>
+      </CardHeader>
       <CardForm id="cardForm" onSubmit={handleSubmit}>
         <Label htmlFor="title">
           <small>
@@ -88,14 +98,6 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
       </CardForm>
-      <CardFooter>
-        <Button onClick={cancelHandle}>
-          <FaReply />
-        </Button>
-        <Button type="submit" form="cardForm">
-          <FaSave />
-        </Button>
-      </CardFooter>
     </CreateCardContainer>
   )
 

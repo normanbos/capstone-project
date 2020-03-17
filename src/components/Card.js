@@ -4,6 +4,18 @@ export const CardFooter = styled.footer`
   display: flex;
   justify-content: space-evenly;
 `
+export const CardHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 2px;
+  font-size: 1.2rem;
+`
+
+export const CardHeaderNav = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
 
 export const CardDetails = styled.div`
   margin: 0;

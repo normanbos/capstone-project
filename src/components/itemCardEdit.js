@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaReply, FaSave } from 'react-icons/fa'
-import { Button } from './Buttons'
-import { CardContainer, CardFooter } from './Card'
+import { RoundButton } from './Buttons'
+import { CardContainer, CardHeader, CardHeaderNav } from './Card'
 import { CardForm, Input, Label } from './Form'
 
 export default function ItemCardEdit({
@@ -13,6 +13,18 @@ export default function ItemCardEdit({
 }) {
   return (
     <CardContainer style={{ display: isEditToggled ? 'block' : 'none' }}>
+      <CardHeader>
+        <div></div>
+        <CardHeaderNav>
+          <RoundButton onClick={handleEditToggle}>
+            <FaReply />
+          </RoundButton>
+          <RoundButton onClick={handleEdit}>
+            <FaSave />
+          </RoundButton>
+        </CardHeaderNav>
+      </CardHeader>
+
       <CardForm>
         <Label htmlFor="title">
           <small>
@@ -83,15 +95,6 @@ export default function ItemCardEdit({
           onChange={handleItemChange}
         />
       </CardForm>
-
-      <CardFooter>
-        <Button onClick={handleEditToggle}>
-          <FaReply />
-        </Button>
-        <Button onClick={handleEdit}>
-          <FaSave />
-        </Button>
-      </CardFooter>
     </CardContainer>
   )
 }
