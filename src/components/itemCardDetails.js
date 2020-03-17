@@ -22,13 +22,17 @@ export default function ItemCardDetails({
   isDetailsToggled,
   handleDetailsToggle,
   handleEditToggle,
+  isCreateToggled,
 }) {
+  console.log('isEditToggled is ' + isEditToggled)
   return (
     <CardContainer
-      pointer-events={isEditToggled ? 'none' : 'auto'}
-      onClick={handleDetailsToggle}
+      onClick={isCreateToggled ? null : handleDetailsToggle}
       style={{
-        display: isDetailsToggled & !isEditToggled ? 'block' : 'none',
+        display:
+          isDetailsToggled & !isEditToggled & !isCreateToggled
+            ? 'block'
+            : 'none',
       }}
     >
       <CardDetails>

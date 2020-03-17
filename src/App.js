@@ -11,16 +11,22 @@ import { loadFromLocal, saveToLocal } from './utils/utils'
 export default function App() {
   const [itemData, setItemData] = useState(loadFromLocal('itemData') || [])
   const { on, toggle } = useToggle(false)
-  const [isToggled, setToggled] = useState(false)
+  const [isCreateToggled, setCreateToggled] = useState(false)
 
   return (
     <Theme>
       <AppGrid>
-        <ItemListContainer style={{ overflowY: isToggled ? 'hidden' : 'auto' }}>
+        <ItemListContainer
+          style={{ overflowY: isCreateToggled ? 'hidden' : 'auto' }}
+        >
           {on && (
-            <FormCreateCard cancelHandle={handleToggle} onSubmit={addItem} />
+            <FormCreateCard
+              cancelHandle={handleCreateToggle}
+              onSubmit={addItem}
+            />
           )}
           <ItemList
+            isCreateToggled={isCreateToggled}
             items={itemData}
             deleteItem={deleteItem}
             editItem={editItem}
@@ -28,8 +34,17 @@ export default function App() {
         </ItemListContainer>
         <AppFooter>
           <FooterRoundButton
-            disabled={isToggled ? 'disabled' : ''}
-            onClick={handleToggle}
+            style={{
+              display: !isCreateToggled ? 'inline-block' : 'none',
+            }}
+            onClick={handleCreateToggle}
+          >
+            <IoIosAddCircle />
+          </FooterRoundButton>
+          <FooterRoundButton
+            style={{
+              display: isCreateToggled ? 'inline-block' : 'none',
+            }}
           >
             <IoIosAddCircle />
           </FooterRoundButton>
@@ -37,10 +52,11 @@ export default function App() {
       </AppGrid>
     </Theme>
   )
-  function handleToggle() {
-    const toggleTrueFalse = () => setToggled(!isToggled)
+  function handleCreateToggle() {
+    const toggleTrueFalse = () => setCreateToggled(!isCreateToggled)
     toggleTrueFalse()
     window.scroll(0, 0)
+    console.log('isCreateToggled is ' + isCreateToggled)
     toggle()
   }
 
@@ -48,7 +64,7 @@ export default function App() {
     const newItems = [item, ...itemData]
     setItemData(newItems)
     saveToLocal('itemData', newItems)
-    handleToggle()
+    handleCreateToggle()
   }
 
   function deleteItem(item) {

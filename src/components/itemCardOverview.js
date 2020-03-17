@@ -9,13 +9,16 @@ export default function ItemCardOverview({
   title,
   borrower,
   duedate,
+  isCreateToggled,
 }) {
   return (
     <CardContainer
-      pointer-events={isEditToggled ? 'none' : 'auto'}
-      onClick={handleDetailsToggle}
+      onClick={isCreateToggled ? null : handleDetailsToggle}
       style={{
-        display: !isDetailsToggled & !isEditToggled ? 'block' : 'none',
+        display:
+          !isDetailsToggled & !isEditToggled || isCreateToggled
+            ? 'block'
+            : 'none',
       }}
     >
       <CardContent>

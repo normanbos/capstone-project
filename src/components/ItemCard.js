@@ -13,6 +13,7 @@ export default function ItemCard({
   deleteItem,
   item,
   editItem,
+  isCreateToggled,
 }) {
   const [isDetailsToggled, setIsDetailsToggled] = useState(false)
   const [isEditToggled, setIsEditToggled] = useState(false)
@@ -38,6 +39,7 @@ export default function ItemCard({
         borrowdate={item.borrowdate}
         duedate={item.duedate}
         item={item}
+        isCreateToggled={isCreateToggled}
       />
 
       <ItemCardDetails
@@ -53,6 +55,7 @@ export default function ItemCard({
         duedate={item.duedate}
         deleteItem={deleteItem}
         item={item}
+        isCreateToggled={isCreateToggled}
       />
 
       <ItemCardEdit
@@ -61,6 +64,7 @@ export default function ItemCard({
         handleEdit={handleEdit}
         handleEditToggle={handleEditToggle}
         handleItemChange={handleItemChange}
+        isCreateToggled={isCreateToggled}
       />
     </CardWrapper>
   )

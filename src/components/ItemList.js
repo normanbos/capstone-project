@@ -1,7 +1,12 @@
 import React from 'react'
 import ItemCard from './itemCard'
 
-export default function ItemList({ items, deleteItem, editItem }) {
+export default function ItemList({
+  items,
+  deleteItem,
+  editItem,
+  isCreateToggled,
+}) {
   return (
     <>
       {items.map(item => (
@@ -15,6 +20,7 @@ export default function ItemList({ items, deleteItem, editItem }) {
           deleteItem={deleteItem}
           editItem={editItem}
           item={item}
+          isCreateToggled={isCreateToggled}
         ></ItemCard>
       ))}
     </>

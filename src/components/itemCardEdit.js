@@ -10,9 +10,14 @@ export default function ItemCardEdit({
   handleEdit,
   handleEditToggle,
   handleItemChange,
+  isCreateToggled,
 }) {
   return (
-    <CardContainer style={{ display: isEditToggled ? 'block' : 'none' }}>
+    <CardContainer
+      style={{
+        display: isEditToggled & !isCreateToggled ? 'block' : 'none',
+      }}
+    >
       <CardHeader>
         <div></div>
         <CardHeaderNav>
