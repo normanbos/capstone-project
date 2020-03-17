@@ -3,7 +3,7 @@ import { FaReply, FaSave } from 'react-icons/fa'
 import styled from 'styled-components'
 import { v4 } from 'uuid'
 import { Button } from './Buttons'
-import { CardFooter } from './Card'
+import { CardFooter, CreateCardContainer } from './Card'
 import { CardForm, Input, Label } from './Form'
 
 export function FormCreateCard({ onSubmit, cancelHandle }) {
@@ -17,7 +17,7 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
   })
 
   return (
-    <CardContainer>
+    <CreateCardContainer>
       <CardForm id="cardForm" onSubmit={handleSubmit}>
         <Label htmlFor="title">
           <small>
@@ -96,7 +96,7 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
           <FaSave />
         </Button>
       </CardFooter>
-    </CardContainer>
+    </CreateCardContainer>
   )
 
   function handleSubmit(event) {
@@ -111,12 +111,3 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
     })
   }
 }
-
-const CardContainer = styled.div`
-  margin: 10px;
-  font-size: 1.2rem;
-  color: #151611;
-  background: #cb7350;
-  padding: 5px;
-  border-radius: 12px;
-`

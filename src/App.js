@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
+import Theme from './components/Theme'
 import { useToggle } from 'react-hooks-lib'
 import { IoIosAddCircle } from 'react-icons/io'
 import styled from 'styled-components'
-import { AppFooter, RoundButton } from './components/AppFooter'
+import { AppFooter, FooterRoundButton } from './components/AppFooter'
 import { FormCreateCard } from './components/formCreateCard'
 import ItemList from './components/itemList'
-import './styles.css'
 import { loadFromLocal, saveToLocal } from './utils/utils'
 
 export default function App() {
@@ -14,26 +14,28 @@ export default function App() {
   const [isToggled, setToggled] = useState(false)
 
   return (
-    <AppGrid>
-      <ItemListContainer style={{ overflowY: isToggled ? 'hidden' : 'auto' }}>
-        {on && (
-          <FormCreateCard cancelHandle={handleToggle} onSubmit={addItem} />
-        )}
-        <ItemList
-          items={itemData}
-          deleteItem={deleteItem}
-          editItem={editItem}
-        />
-      </ItemListContainer>
-      <AppFooter>
-        <RoundButton
-          disabled={isToggled ? 'disabled' : ''}
-          onClick={handleToggle}
-        >
-          <IoIosAddCircle />
-        </RoundButton>
-      </AppFooter>
-    </AppGrid>
+    <Theme>
+      <AppGrid>
+        <ItemListContainer style={{ overflowY: isToggled ? 'hidden' : 'auto' }}>
+          {on && (
+            <FormCreateCard cancelHandle={handleToggle} onSubmit={addItem} />
+          )}
+          <ItemList
+            items={itemData}
+            deleteItem={deleteItem}
+            editItem={editItem}
+          />
+        </ItemListContainer>
+        <AppFooter>
+          <FooterRoundButton
+            disabled={isToggled ? 'disabled' : ''}
+            onClick={handleToggle}
+          >
+            <IoIosAddCircle />
+          </FooterRoundButton>
+        </AppFooter>
+      </AppGrid>
+    </Theme>
   )
   function handleToggle() {
     const toggleTrueFalse = () => setToggled(!isToggled)
@@ -73,7 +75,7 @@ export default function App() {
 
 const AppGrid = styled.div`
   display: grid;
-  background: #234653;
+  background: ${props => props.theme.colors.blueDianne};
   grid-template-rows: auto 90px;
   position: fixed;
   left: 0;
@@ -84,6 +86,6 @@ const AppGrid = styled.div`
 `
 
 const ItemListContainer = styled.section`
-  background: #151611;
+  background: ${props => props.theme.colors.rangoonGreen};
   padding: 20px;
 `

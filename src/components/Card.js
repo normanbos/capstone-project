@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro'
+import styled, { keyframes } from 'styled-components/macro'
 
 export const CardFooter = styled.footer`
   display: flex;
@@ -25,4 +25,33 @@ export const CardContentSmall = styled.p`
 export const CardContainer = styled.div`
   margin: 0;
   padding: 0;
+`
+
+const cardCreationAnimation = props => keyframes`
+from {
+    background-color: ${props.theme.colors.rawSienna};
+  }
+  to {
+    background-color: ${props.theme.colors.tradewind};
+  }
+`
+
+export const CardWrapper = styled.div`
+  margin: 10px;
+  font-size: 1.2rem;
+  color: ${props => props.theme.colors.rangoonGreen};
+  padding: 5px;
+  border-radius: 12px;
+  background-color: ${props => props.theme.colors.tradewind};
+  animation-name: ${cardCreationAnimation};
+  animation-duration: 4s;
+`
+
+export const CreateCardContainer = styled.div`
+  margin: 10px;
+  font-size: 1.2rem;
+  color: ${props => props.theme.colors.rangoonGreen};
+  background: ${props => props.theme.colors.rawSienna};
+  padding: 5px;
+  border-radius: 12px;
 `

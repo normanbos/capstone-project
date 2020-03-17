@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaEdit, FaTrashAlt } from 'react-icons/fa'
-import { Button } from './Buttons'
+import { Button, RoundButton } from './Buttons'
 import {
   CardDetails,
   CardContent,
@@ -59,12 +59,12 @@ export default function ItemCardDetails({
         </>
       </CardDetails>
       <CardFooter>
-        <Button onClick={handleEditToggle}>
+        <RoundButton onClick={handleEditToggle}>
           <FaEdit />
-        </Button>
-        <Button onClick={() => deleteItem(item)}>
+        </RoundButton>
+        <RoundButton onClick={() => deleteItem(item)}>
           <FaTrashAlt />
-        </Button>
+        </RoundButton>
       </CardFooter>
     </CardContainer>
   )

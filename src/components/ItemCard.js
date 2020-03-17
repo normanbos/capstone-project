@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ItemCardDetails from './itemCardDetails'
 import ItemCardOverView from './itemCardOverview'
 import ItemCardEdit from './itemCardEdit'
+import { CardWrapper } from './Card'
 
 export default function ItemCard({
   title,
@@ -25,7 +26,7 @@ export default function ItemCard({
   })
 
   return (
-    <div className="card-container">
+    <CardWrapper>
       <ItemCardOverView
         handleDetailsToggle={handleDetailsToggle}
         isDetailsToggled={isDetailsToggled}
@@ -61,7 +62,7 @@ export default function ItemCard({
         handleEditToggle={handleEditToggle}
         handleItemChange={handleItemChange}
       />
-    </div>
+    </CardWrapper>
   )
 
   function handleDetailsToggle() {
