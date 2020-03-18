@@ -1,6 +1,59 @@
+import React from 'react'
+import { FaEdit, FaTrashAlt, FaReply, FaSave } from 'react-icons/fa'
+import { ReactComponent as Icon } from '../img/mailalertplaceholder.svg'
 import styled from 'styled-components/macro'
 
-export const Button = styled.button`
+export function MailAlertButton() {
+  return (
+    <RoundButton
+      css={`
+        background: ${props => props.theme.colors.rawSienna};
+      `}
+    >
+      <Icon
+        fill="#151611"
+        width="60%"
+        height="auto"
+        strokeWidth="15"
+        name="mailalert"
+      />
+    </RoundButton>
+  )
+}
+
+export function EditButton({ onClick }) {
+  return (
+    <RoundButton onClick={onClick}>
+      <FaEdit />
+    </RoundButton>
+  )
+}
+
+export function DeleteButton({ onClick }) {
+  return (
+    <RoundButton onClick={onClick}>
+      <FaTrashAlt />
+    </RoundButton>
+  )
+}
+
+export function CancelButton({ onClick }) {
+  return (
+    <RoundButton onClick={onClick}>
+      <FaReply />
+    </RoundButton>
+  )
+}
+
+export function SaveButton({ onClick }) {
+  return (
+    <RoundButton onClick={onClick}>
+      <FaSave />
+    </RoundButton>
+  )
+}
+
+const Button = styled.button`
   width: 7rem;
   height: 3rem;
   display: inline-block;
@@ -20,7 +73,7 @@ export const Button = styled.button`
   -moz-appearance: none;
 `
 
-export const RoundButton = styled.div`
+const RoundButton = styled.div`
   display: inline-block;
   width: 2em;
   height: 2em;

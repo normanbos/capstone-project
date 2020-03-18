@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { MailAlertButton } from './buttons'
 import { v4 } from 'uuid'
 
-export default function CountdownTimer({ itemDueDate }) {
+export function CountdownTimer({ itemDueDate }) {
   const dueDate = itemDueDate
   const calculateTimeLeft = () => {
     const difference = +new Date(dueDate) - +new Date()
@@ -48,6 +49,7 @@ export default function CountdownTimer({ itemDueDate }) {
       ) : (
         <StyledSpan>überfällig!</StyledSpan>
       )}
+      {timerComponents.length ? '' : <MailAlertButton />}
     </>
   )
 }

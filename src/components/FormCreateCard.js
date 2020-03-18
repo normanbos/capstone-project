@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { FaReply, FaSave } from 'react-icons/fa'
 import { v4 } from 'uuid'
-import { RoundButton } from './Buttons'
+import { CancelButton, SaveButton } from './buttons'
 import { CreateCardContainer, CardHeader, CardHeaderNav } from './Card'
 import { CardForm, Input, Label } from './Form'
 
@@ -20,12 +19,8 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
       <CardHeader>
         <div></div>
         <CardHeaderNav>
-          <RoundButton onClick={cancelHandle}>
-            <FaReply />
-          </RoundButton>
-          <RoundButton type="submit" form="cardForm">
-            <FaSave />
-          </RoundButton>
+          <CancelButton onClick={cancelHandle} />
+          <SaveButton type="submit" form="cardForm" onClick={handleSubmit} />
         </CardHeaderNav>
       </CardHeader>
       <CardForm id="cardForm" onSubmit={handleSubmit}>

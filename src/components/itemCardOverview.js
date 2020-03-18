@@ -1,6 +1,6 @@
 import React from 'react'
 import { CardContent, CardContentSmall, CardContainer } from './Card'
-import CountdownTimer from './countdownTimer'
+import { CountdownTimer } from './countdownTimer'
 
 export default function ItemCardOverview({
   handleDetailsToggle,
@@ -11,6 +11,7 @@ export default function ItemCardOverview({
   duedate,
   isCreateToggled,
 }) {
+  console.log()
   return (
     <CardContainer
       onClick={isCreateToggled ? null : handleDetailsToggle}
