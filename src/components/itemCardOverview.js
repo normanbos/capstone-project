@@ -11,7 +11,6 @@ export default function ItemCardOverview({
   duedate,
   isCreateToggled,
 }) {
-  console.log()
   return (
     <CardContainer
       onClick={isCreateToggled ? null : handleDetailsToggle}

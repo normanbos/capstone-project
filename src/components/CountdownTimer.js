@@ -4,24 +4,29 @@ import { MailAlertButton } from './buttons'
 import { v4 } from 'uuid'
 
 export function CountdownTimer({ itemDueDate }) {
-  const dueDate = itemDueDate
-  const calculateTimeLeft = () => {
-    const difference = +new Date(dueDate) - +new Date()
+  const Interval = () => {
+    const deadline = new Date(itemDueDate)
+    deadline.setDate(deadline.getDate() + 1)
+    const now = new Date()
+    const difference = deadline - now
+
     let timeLeft = {}
 
     if (difference > 0) {
       timeLeft = {
         Tage: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        Stunden: Math.floor((difference / (1000 * 60 * 60)) % 24),
       }
     }
+
     return timeLeft
   }
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft())
+  const [timeLeft, setTimeLeft] = useState(Interval())
 
   useEffect(() => {
     setTimeout(() => {
-      setTimeLeft(calculateTimeLeft())
+      setTimeLeft(Interval())
     }, 1000)
   })
 
@@ -41,6 +46,15 @@ export function CountdownTimer({ itemDueDate }) {
 
   return (
     <>
+      <RenderTimer timerComponents={timerComponents} />
+      <MailAlert timerComponents={timerComponents} />
+    </>
+  )
+}
+
+function RenderTimer({ timerComponents }) {
+  return (
+    <>
       <span>
         <i>fällig: </i>
       </span>
@@ -49,9 +63,12 @@ export function CountdownTimer({ itemDueDate }) {
       ) : (
         <StyledSpan>überfällig!</StyledSpan>
       )}
-      {timerComponents.length ? '' : <MailAlertButton />}
     </>
   )
+}
+
+export function MailAlert({ timerComponents }) {
+  return <>{timerComponents.length ? '' : <MailAlertButton />}</>
 }
 
 const StyledSpan = styled.span`
