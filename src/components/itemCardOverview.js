@@ -1,6 +1,6 @@
 import React from 'react'
 import { CardContent, CardContentSmall, CardContainer } from './Card'
-import { CountdownTimer } from './countdownTimer'
+import DueTimer from './dueTimer'
 
 export default function ItemCardOverview({
   handleDetailsToggle,
@@ -8,8 +8,8 @@ export default function ItemCardOverview({
   isEditToggled,
   title,
   borrower,
-  duedate,
   isCreateToggled,
+  timeLeft,
 }) {
   return (
     <CardContainer
@@ -26,7 +26,8 @@ export default function ItemCardOverview({
       </CardContent>
       <CardContentSmall>
         <i>bei: </i>
-        {borrower} • <CountdownTimer itemDueDate={duedate} />
+        {borrower} • <i>fällig: </i>
+        <DueTimer timeLeft={timeLeft} />
       </CardContentSmall>
     </CardContainer>
   )

@@ -12,6 +12,6 @@ export default createGlobalStyle`
     font-size: 18px;
     line-height: 1.4;
     overflow: hidden;
-    height: 100vh;
+    height: 100%;
   }
 `

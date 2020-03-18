@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ItemCardDetails from './itemCardDetails'
 import ItemCardOverView from './itemCardOverview'
 import ItemCardEdit from './itemCardEdit'
@@ -25,6 +25,24 @@ export default function ItemCard({
     duedate,
     id: item.id,
   })
+  const [timeLeft, setTimeLeft] = useState({})
+
+  function calculateTimeLeft() {
+    const deadline = new Date(duedate)
+    deadline.setDate(deadline.getDate() + 1)
+    const now = new Date()
+    const difference = deadline - now
+
+    setTimeLeft({
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+    })
+  }
+  useEffect(() => {
+    setTimeout(() => {
+      calculateTimeLeft()
+    }, 1000)
+  })
 
   return (
     <CardWrapper>
@@ -40,6 +58,7 @@ export default function ItemCard({
         duedate={item.duedate}
         item={item}
         isCreateToggled={isCreateToggled}
+        timeLeft={timeLeft}
       />
 
       <ItemCardDetails
@@ -56,6 +75,7 @@ export default function ItemCard({
         deleteItem={deleteItem}
         item={item}
         isCreateToggled={isCreateToggled}
+        timeLeft={timeLeft}
       />
 
       <ItemCardEdit

@@ -23,6 +23,7 @@ export default function ItemCardDetails({
   handleDetailsToggle,
   handleEditToggle,
   isCreateToggled,
+  timeLeft,
 }) {
   console.log('isEditToggled is ' + isEditToggled)
   return (
@@ -39,6 +40,7 @@ export default function ItemCardDetails({
         <CardHeader>
           <b>{title}</b>
           <CardHeaderNav>
+            {timeLeft.hours <= 0 && timeLeft.days <= 0 && <MailAlertButton />}
             <EditButton onClick={handleEditToggle} />
             <DeleteButton onClick={() => deleteItem(item)} />
           </CardHeaderNav>
