@@ -3,6 +3,10 @@ import ItemCardDetails from './itemCardDetails'
 import ItemCardOverView from './itemCardOverview'
 import ItemCardEdit from './itemCardEdit'
 import { CardWrapper } from './Card'
+import Modal from 'react-modal'
+import { StyledModal } from './sendReminder'
+
+Modal.setAppElement(document.getElementById('root'))
 
 export default function ItemCard({
   title,
@@ -44,8 +48,38 @@ export default function ItemCard({
     }, 1000)
   })
 
+  const [modalIsOpen, setIsOpen] = useState(false)
+  function openModal() {
+    setIsOpen(true)
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    // subtitle.style.color = '#f00'
+  }
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
   return (
     <CardWrapper>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        shouldCloseOnOverlayClick={false}
+        style={StyledModal}
+      >
+        <div>
+          <p>
+            <b>{item.title}</b> hätte von <b>{item.borrower}</b> längst wieder
+            zurückgegeben worden sein!
+          </p>
+          <button onClick={closeModal}>Close Modal</button>
+        </div>
+      </Modal>
+
       <ItemCardOverView
         handleDetailsToggle={handleDetailsToggle}
         isDetailsToggled={isDetailsToggled}
@@ -76,6 +110,7 @@ export default function ItemCard({
         item={item}
         isCreateToggled={isCreateToggled}
         timeLeft={timeLeft}
+        openModal={openModal}
       />
 
       <ItemCardEdit

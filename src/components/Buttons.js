@@ -4,9 +4,10 @@ import { IoIosAddCircle } from 'react-icons/io'
 import { ReactComponent as Icon } from '../img/mailalertplaceholder.svg'
 import styled from 'styled-components/macro'
 
-export function MailAlertButton() {
+export function MailAlertButton({ onClick }) {
   return (
     <Button
+      onClick={onClick}
       css={`
         background: ${props => props.theme.colors.rawSienna};
       `}
