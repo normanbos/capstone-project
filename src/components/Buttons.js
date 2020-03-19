@@ -1,73 +1,97 @@
 import React from 'react'
 import { FaEdit, FaTrashAlt, FaReply, FaSave } from 'react-icons/fa'
+import { IoIosAddCircle } from 'react-icons/io'
 import { ReactComponent as Icon } from '../img/mailalertplaceholder.svg'
 import styled from 'styled-components/macro'
 
 export function MailAlertButton() {
   return (
-    <RoundButton
+    <Button
       css={`
         background: ${props => props.theme.colors.rawSienna};
       `}
     >
-      <Icon
-        fill="#151611"
-        width="60%"
-        height="auto"
-        strokeWidth="15"
-        name="mailalert"
-      />
-    </RoundButton>
+      <Icon fill="#151611" height="auto" strokeWidth="15" name="mailalert" />
+    </Button>
   )
 }
 
 export function EditButton({ onClick }) {
   return (
-    <RoundButton onClick={onClick}>
+    <Button onClick={onClick}>
       <FaEdit />
-    </RoundButton>
+    </Button>
   )
 }
 
 export function DeleteButton({ onClick }) {
   return (
-    <RoundButton onClick={onClick}>
+    <Button onClick={onClick}>
       <FaTrashAlt />
-    </RoundButton>
+    </Button>
   )
 }
 
 export function CancelButton({ onClick }) {
   return (
-    <RoundButton onClick={onClick}>
+    <Button onClick={onClick}>
       <FaReply />
-    </RoundButton>
+    </Button>
   )
 }
 
 export function SaveButton({ onClick }) {
   return (
-    <RoundButton onClick={onClick}>
+    <Button name="save" onClick={onClick}>
       <FaSave />
-    </RoundButton>
+    </Button>
+  )
+}
+
+export function FooterButton({ onClick, style }) {
+  return (
+    <LargeButton style={style} name="footerButton" onClick={onClick}>
+      <IoIosAddCircle />
+    </LargeButton>
   )
 }
 
 const Button = styled.button`
-  width: 7rem;
-  height: 3rem;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+  width: 2em;
+  height: 2em;
   display: inline-block;
-  border: none;
-  border-radius: 12px;
-  padding: 1rem 2rem;
-  margin: 0.5rem;
+  border-radius: 50%;
+  font-size: 1em;
+  margin-left: 0.5em;
   text-decoration: none;
   background: ${props => props.theme.colors.goldSand};
-  font-family: 'Fira Mono', monospace;
-  font-size: 18px;
+  color: ${props => props.theme.colors.blueDianne};
   line-height: 1;
-  cursor: pointer;
   text-align: center;
+  vertical-align: middle;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+`
+
+const LargeButton = styled.div`
+  border: 0;
+  text-decoration: none;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  border-radius: 50%;
+  font-size: 3.9em;
+  margin-top: 0.12em;
+  text-decoration: none;
+  background: ${props => props.theme.colors.goldSand};
+  color: ${props => props.theme.colors.blueDianne};
+  line-height: 1;
+  justify-content: center;
+  vertical-align: middle;
   transition: background 250ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;

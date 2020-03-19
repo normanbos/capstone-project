@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import Theme from './components/Theme'
 import { useToggle } from 'react-hooks-lib'
-import { IoIosAddCircle } from 'react-icons/io'
 import styled from 'styled-components'
-import { AppFooter, FooterRoundButton } from './components/AppFooter'
+import { FooterButton } from './components/buttons'
+import { AppFooter } from './components/AppFooter'
 import { FormCreateCard } from './components/formCreateCard'
 import ItemList from './components/itemList'
 import { loadFromLocal, saveToLocal } from './utils/utils'
@@ -33,21 +33,20 @@ export default function App() {
           />
         </ItemListContainer>
         <AppFooter>
-          <FooterRoundButton
+          <FooterButton
             style={{
               display: !isCreateToggled ? 'inline-block' : 'none',
+              cursor: !isCreateToggled ? 'pointer' : 'auto',
             }}
             onClick={handleCreateToggle}
-          >
-            <IoIosAddCircle />
-          </FooterRoundButton>
-          <FooterRoundButton
+          />
+
+          <FooterButton
             style={{
               display: isCreateToggled ? 'inline-block' : 'none',
+              cursor: isCreateToggled ? 'auto' : 'pointer',
             }}
-          >
-            <IoIosAddCircle />
-          </FooterRoundButton>
+          />
         </AppFooter>
       </AppGrid>
     </Theme>
@@ -56,7 +55,6 @@ export default function App() {
     const toggleTrueFalse = () => setCreateToggled(!isCreateToggled)
     toggleTrueFalse()
     window.scroll(0, 0)
-    console.log('isCreateToggled is ' + isCreateToggled)
     toggle()
   }
 
