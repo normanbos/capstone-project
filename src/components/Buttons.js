@@ -12,7 +12,14 @@ export function MailAlertButton({ onClick }) {
         background: ${props => props.theme.colors.rawSienna};
       `}
     >
-      <Icon fill="#151611" height="auto" strokeWidth="15" name="mailalert" />
+      <Icon
+        stroke="currentColor"
+        fill="#151611"
+        height="1em"
+        width="1em"
+        strokeWidth="0"
+        name="mailalert"
+      />
     </Button>
   )
 }

@@ -1,11 +1,7 @@
-import React from 'react'
-import styled from 'styled-components/macro'
-import Modal from 'react-modal'
-
 export const StyledModal = {
   content: {
     borderRadius: '12px',
-    background: '#52b2a9',
+    background: '#cb7350',
     top: '50%',
     left: '50%',
     minWidth: '19em',

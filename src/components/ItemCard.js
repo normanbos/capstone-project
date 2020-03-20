@@ -74,8 +74,10 @@ export default function ItemCard({
         <div>
           <p>
             <b>{item.title}</b> hätte von <b>{item.borrower}</b> längst wieder
-            zurückgegeben worden sein!
+            zurückgegeben worden sein! Sende eine freundliche Erinnerung.
           </p>
+
+          <button onClick={closeModal}>Erinnerung senden</button>
           <button onClick={closeModal}>Close Modal</button>
         </div>
       </Modal>
