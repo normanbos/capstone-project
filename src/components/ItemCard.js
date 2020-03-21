@@ -5,6 +5,7 @@ import ItemCardEdit from './itemCardEdit'
 import { CardWrapper } from './Card'
 import Modal from 'react-modal'
 import { StyledModal } from './sendReminder'
+import { sendReminderMail } from './mailer/nodeMailer'
 
 Modal.setAppElement(document.getElementById('root'))
 
@@ -70,6 +71,7 @@ export default function ItemCard({
         onRequestClose={closeModal}
         shouldCloseOnOverlayClick={false}
         style={StyledModal}
+        sendReminderMail={sendReminderMail}
       >
         <div>
           <p>
@@ -77,7 +79,7 @@ export default function ItemCard({
             zurückgegeben worden sein! Sende eine freundliche Erinnerung.
           </p>
 
-          <button onClick={closeModal}>Erinnerung senden</button>
+          <button onClick={sendReminderMail}>Erinnerung senden</button>
           <button onClick={closeModal}>Close Modal</button>
         </div>
       </Modal>
