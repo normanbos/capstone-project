@@ -1,55 +1,88 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { CardForm, Input, Label } from '../Form'
+import axios from 'axios'
 
-export function MailForm() {
-  return (
-    <form
-      id="contact-form"
-      onSubmit={this.handleSubmit.bind(this)}
-      method="POST"
-    >
-      <div className="form-group">
-        <label for="name">Name</label>
-        <input type="text" className="form-control" id="name" />
-      </div>
-      <div className="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input
-          type="email"
-          className="form-control"
-          id="email"
-          aria-describedby="emailHelp"
-        />
-      </div>
-      <div className="form-group">
-        <label for="message">Message</label>
-        <textarea className="form-control" rows="5" id="message"></textarea>
-      </div>
-      <button type="submit" className="btn btn-primary">
-        Submit
-      </button>
-    </form>
-  )
+export function MailForm({ borrower, contact }) {
+  const [state, setState] = useState({
+    name: borrower,
+    message: '',
+    email: contact,
+    sent: false,
+    buttonText: 'Erinnerung senden',
+  })
 
-  function handleSubmit(e) {
+  function formSubmit(e) {
     e.preventDefault()
-    const name = document.getElementById('name').value
-    const email = document.getElementById('email').value
-    const message = document.getElementById('message').value
-    axios({
-      method: 'POST',
-      url: 'http://localhost:3002/send',
-      data: {
-        name: name,
-        email: email,
-        messsage: message,
-      },
-    }).then(response => {
-      if (response.data.msg === 'success') {
-        alert('Message Sent.')
-        this.resetForm()
-      } else if (response.data.msg === 'fail') {
-        alert('Message failed to send.')
-      }
+
+    setState({
+      buttonText: '...sending',
+    })
+
+    let data = {
+      name: state.name,
+      email: state.email,
+      message: state.message,
+    }
+
+    axios
+      .post('http://localhost:4000', data)
+      .then(res => {
+        setState({ sent: true }, resetForm())
+      })
+      .catch(() => {
+        console.log('Message not sent')
+      })
+  }
+
+  function resetForm() {
+    setState({
+      name: '',
+      message: '',
+      email: '',
+      buttonText: 'Message Sent',
     })
   }
+
+  return (
+    <CardForm className="contact-form" onSubmit={e => formSubmit(e)}>
+      <Label class="message" htmlFor="message-input">
+        Deine Nachricht
+      </Label>
+      <textarea
+        onChange={e => setState({ message: e.target.value })}
+        name="message"
+        type="text"
+        placeholder="Gib deine Nachricht hier ein"
+        value={state.message}
+        required
+      />
+
+      <Label class="message-name" htmlFor="message-name">
+        An
+      </Label>
+      <Input
+        onChange={e => setState({ name: e.target.value })}
+        name="name"
+        type="text"
+        placeholder="Your Name"
+        value={state.name}
+      />
+
+      <Label class="message-email" htmlFor="message-email">
+        Email
+      </Label>
+      <Input
+        onChange={e => setState({ email: e.target.value })}
+        name="email"
+        type="email"
+        placeholder="your@email.com"
+        required
+        value={state.email}
+      />
+
+      <div>
+        <button type="submit">{state.buttonText}</button>
+      </div>
+    </CardForm>
+  )
 }
