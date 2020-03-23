@@ -26,7 +26,7 @@ export function MailForm({ item, borrower, contact }) {
     }
 
     axios
-      .post('http://localhost:4000', data)
+      .post('/api/v1', data)
       .then(res => {
         setState({ sent: true, buttonText: 'Message Sent' })
       })

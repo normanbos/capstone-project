@@ -4,7 +4,7 @@ import ItemCardOverView from './itemCardOverview'
 import ItemCardEdit from './itemCardEdit'
 import { CardWrapper } from './Card'
 import Modal from 'react-modal'
-import { StyledModal } from './sendReminder'
+import { StyledModal } from './ReminderModal'
 import { MailForm } from './mailer/reminderMailer'
 
 Modal.setAppElement(document.getElementById('root'))
