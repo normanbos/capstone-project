@@ -74,11 +74,13 @@ export default function ItemCard({
       >
         <div>
           <p>
-            Der Gegenstand <b>{item.title}</b> hätte von <b>{item.borrower}</b>{' '}
-            längst wieder zurückgegeben worden sein sollen! Sende eine
-            freundliche Erinnerung.
+            Sende eine freundliche Erinnerung an <b>{item.borrower}</b>:
           </p>
-          <MailForm borrower={item.borrower} contact={item.contact} />
+          <MailForm
+            item={item.title}
+            borrower={item.borrower}
+            contact={item.contact}
+          />
           <button onClick={closeModal}>Fenster schließen</button>
         </div>
       </Modal>

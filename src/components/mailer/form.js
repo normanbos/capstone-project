@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
+import styled from 'styled-components/macro'
 import { CardForm, Input, Label } from '../Form'
 import axios from 'axios'
 
-export function MailForm({ borrower, contact }) {
+export function MailForm({ item, borrower, contact }) {
   const [state, setState] = useState({
     name: borrower,
-    message: '',
+    message: `Hallo ${borrower}, bitte denk daran, mir folgenden Gegenstand wieder
+    zurück zu geben: ${item}`,
     email: contact,
     sent: false,
     buttonText: 'Erinnerung senden',
@@ -44,45 +46,34 @@ export function MailForm({ borrower, contact }) {
   }
 
   return (
-    <CardForm className="contact-form" onSubmit={e => formSubmit(e)}>
-      <Label class="message" htmlFor="message-input">
-        Deine Nachricht
-      </Label>
-      <textarea
-        onChange={e => setState({ message: e.target.value })}
-        name="message"
-        type="text"
-        placeholder="Gib deine Nachricht hier ein"
-        value={state.message}
-        required
-      />
+    <>
+      <ReminderBody>
+        "Hallo <b>{borrower}</b>, bitte denk daran, mir folgenden Gegenstand
+        wieder zurück zu geben: <b>{item}"</b>
+      </ReminderBody>
+      <CardForm onSubmit={e => formSubmit(e)}>
+        <Label htmlFor="message-email">Senden an:</Label>
+        <Input
+          onChange={e => setState({ email: e.target.value })}
+          name="email"
+          type="email"
+          placeholder="your@email.com"
+          required
+          value={state.email}
+        />
 
-      <Label class="message-name" htmlFor="message-name">
-        An
-      </Label>
-      <Input
-        onChange={e => setState({ name: e.target.value })}
-        name="name"
-        type="text"
-        placeholder="Your Name"
-        value={state.name}
-      />
-
-      <Label class="message-email" htmlFor="message-email">
-        Email
-      </Label>
-      <Input
-        onChange={e => setState({ email: e.target.value })}
-        name="email"
-        type="email"
-        placeholder="your@email.com"
-        required
-        value={state.email}
-      />
-
-      <div>
-        <button type="submit">{state.buttonText}</button>
-      </div>
-    </CardForm>
+        <div>
+          <button type="submit">{state.buttonText}</button>
+        </div>
+      </CardForm>
+    </>
   )
 }
+
+export const ReminderBody = styled.p`
+  margin: 0;
+  font-size: 0.9rem;
+  padding: 5px;
+  background-color: white;
+  border-radius: 4px;
+`
