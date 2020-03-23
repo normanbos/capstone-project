@@ -40,9 +40,9 @@ app.post('/api/v1', (req, res) => {
   })
 
   var mailOptions = {
-    from: data.email,
-    to: 'ENTER_YOUR_EMAIL',
-    subject: 'ENTER_YOUR_SUBJECT',
+    from: 'norman.bos@gmx.de',
+    to: data.email,
+    subject: 'Reminder',
     html: `<p>${data.name}</p>
           <p>${data.email}</p>
           <p>${data.message}</p>`,

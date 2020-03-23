@@ -5,7 +5,7 @@ import ItemCardEdit from './itemCardEdit'
 import { CardWrapper } from './Card'
 import Modal from 'react-modal'
 import { StyledModal } from './sendReminder'
-import { MailForm } from './mailer/form'
+import { MailForm } from './mailer/reminderMailer'
 
 Modal.setAppElement(document.getElementById('root'))
 
@@ -81,7 +81,7 @@ export default function ItemCard({
             borrower={item.borrower}
             contact={item.contact}
           />
-          <button onClick={closeModal}>Fenster schließen</button>
+          <button onClick={closeModal}>abbrechen</button>
         </div>
       </Modal>
 

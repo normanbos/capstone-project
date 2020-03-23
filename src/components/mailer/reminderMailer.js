@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import { CardForm, Input, Label } from '../Form'
 import axios from 'axios'
 
 export function MailForm({ item, borrower, contact }) {
@@ -10,11 +9,11 @@ export function MailForm({ item, borrower, contact }) {
     zurück zu geben: ${item}`,
     email: contact,
     sent: false,
-    buttonText: 'Erinnerung senden',
+    buttonText: 'Erinnerung senden an',
   })
 
-  function formSubmit(e) {
-    e.preventDefault()
+  function onSend(event) {
+    event.preventDefault()
 
     setState({
       buttonText: '...sending',
@@ -29,20 +28,11 @@ export function MailForm({ item, borrower, contact }) {
     axios
       .post('http://localhost:4000', data)
       .then(res => {
-        setState({ sent: true }, resetForm())
+        setState({ sent: true, buttonText: 'Message Sent' })
       })
       .catch(() => {
         console.log('Message not sent')
       })
-  }
-
-  function resetForm() {
-    setState({
-      name: '',
-      message: '',
-      email: '',
-      buttonText: 'Message Sent',
-    })
   }
 
   return (
@@ -51,21 +41,10 @@ export function MailForm({ item, borrower, contact }) {
         "Hallo <b>{borrower}</b>, bitte denk daran, mir folgenden Gegenstand
         wieder zurück zu geben: <b>{item}"</b>
       </ReminderBody>
-      <CardForm onSubmit={e => formSubmit(e)}>
-        <Label htmlFor="message-email">Senden an:</Label>
-        <Input
-          onChange={e => setState({ email: e.target.value })}
-          name="email"
-          type="email"
-          placeholder="your@email.com"
-          required
-          value={state.email}
-        />
-
-        <div>
-          <button type="submit">{state.buttonText}</button>
-        </div>
-      </CardForm>
+      <div>
+        <button onClick={onSend}>{state.buttonText}</button>
+        <span> {state.email}</span>
+      </div>
     </>
   )
 }
