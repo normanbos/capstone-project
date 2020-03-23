@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { v4 } from 'uuid'
 import { CancelButton, SaveButton } from './buttons'
-import { CreateCardContainer, CardHeader, CardHeaderNav } from './Card'
+import { CardHeader, CardHeaderNav, CreateCardContainer } from './Card'
 import { CardForm, Input, Label } from './Form'
 
 export function FormCreateCard({ onSubmit, cancelHandle }) {

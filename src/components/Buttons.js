@@ -1,8 +1,8 @@
 import React from 'react'
-import { FaEdit, FaTrashAlt, FaReply, FaSave } from 'react-icons/fa'
+import { FaEdit, FaReply, FaSave, FaTrashAlt } from 'react-icons/fa'
 import { IoIosAddCircle } from 'react-icons/io'
-import { ReactComponent as Icon } from '../img/mailalertplaceholder.svg'
 import styled from 'styled-components/macro'
+import { ReactComponent as Icon } from '../img/mailalertplaceholder.svg'
 
 export function MailAlertButton({ onClick }) {
   return (
@@ -86,47 +86,24 @@ const Button = styled.button`
 `
 
 const LargeButton = styled.div`
-  border: 0;
-  text-decoration: none;
   width: 1em;
   height: 1em;
+
   display: inline-block;
-  border-radius: 50%;
-  font-size: 3.9em;
-  margin-top: 0.12em;
-  text-decoration: none;
-  background: ${props => props.theme.colors.goldSand};
-  color: ${props => props.theme.colors.blueDianne};
-  line-height: 1;
   justify-content: center;
   vertical-align: middle;
+
+  border: 0;
+  border-radius: 50%;
+  margin-top: 0.12em;
+
+  font-size: 3.9em;
+  line-height: 1;
+  text-decoration: none;
+
+  background: ${props => props.theme.colors.goldSand};
+  color: ${props => props.theme.colors.blueDianne};
   transition: background 250ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
-`
-
-const RoundButton = styled.div`
-  display: inline-block;
-  width: 2em;
-  height: 2em;
-  margin-left: 0.5em;
-  background-color: ${props => props.theme.colors.goldSand};
-  border-radius: 50%;
-  text-align: center;
-
-  &:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    margin: 0.4px; /* Adjusts for spacing */
-  }
-
-  > * {
-    color: ${props => props.theme.colors.blueDianne};
-    font-size: 1em;
-    margin: auto;
-    text-align: center;
-    vertical-align: middle;
-  }
 `

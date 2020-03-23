@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import ItemCardDetails from './itemCardDetails'
-import ItemCardOverView from './itemCardOverview'
-import ItemCardEdit from './itemCardEdit'
-import { CardWrapper } from './Card'
+import React, { useEffect, useState } from 'react'
 import Modal from 'react-modal'
+import { CardWrapper } from './Card'
+import ItemCardDetails from './itemCardDetails'
+import ItemCardEdit from './itemCardEdit'
+import ItemCardOverView from './itemCardOverview'
+import { ReminderMailer } from './reminderMailer'
 import { StyledModal } from './ReminderModal'
-import { MailForm } from './mailer/reminderMailer'
 
 Modal.setAppElement(document.getElementById('root'))
 
@@ -74,14 +74,15 @@ export default function ItemCard({
       >
         <div>
           <p>
-            Sende eine freundliche Erinnerung an <b>{item.borrower}</b>:
+            Sende eine freundliche Erinnerung an <b>{item.borrower}</b>{' '}
+            <small>&#40;{contact}&#41;</small>:
           </p>
-          <MailForm
+          <ReminderMailer
             item={item.title}
             borrower={item.borrower}
             contact={item.contact}
+            closeModal={closeModal}
           />
-          <button onClick={closeModal}>abbrechen</button>
         </div>
       </Modal>
 

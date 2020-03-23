@@ -1,11 +1,10 @@
 import React from 'react'
-import { MailAlertButton, EditButton, DeleteButton } from './buttons'
-
+import { DeleteButton, EditButton, MailAlertButton } from './buttons'
 import {
-  CardDetails,
+  CardContainer,
   CardContent,
   CardContentSmall,
-  CardContainer,
+  CardDetails,
   CardHeader,
   CardHeaderNav,
 } from './Card'

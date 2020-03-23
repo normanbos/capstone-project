@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardContent, CardContentSmall, CardContainer } from './Card'
+import { CardContainer, CardContent, CardContentSmall } from './Card'
 import DueTimer from './dueTimer'
 
 export default function ItemCardOverview({

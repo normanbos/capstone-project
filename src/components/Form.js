@@ -14,12 +14,12 @@ export const Label = styled.label`
 export const Input = styled.input`
   grid-column: 2 / 3;
   box-sizing: border-box;
-  font-family: inherit;
-  font-size: 100%;
+  overflow: auto;
   width: auto;
-  border: 2px solid #ccc;
-  border-radius: 4px;
   margin: 5px;
   padding: 5px 10px;
-  overflow: auto;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 100%;
 `

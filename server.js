@@ -43,9 +43,7 @@ app.post('/api/v1', (req, res) => {
     from: 'norman.bos@gmx.de',
     to: data.email,
     subject: 'Reminder',
-    html: `<p>${data.name}</p>
-          <p>${data.email}</p>
-          <p>${data.message}</p>`,
+    html: data.message,
   }
 
   smtpTransport.sendMail(mailOptions, (error, response) => {
