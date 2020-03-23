@@ -65,21 +65,24 @@ export function FooterButton({ onClick, style }) {
 }
 
 const Button = styled.button`
-  border: 0;
-  text-decoration: none;
-  cursor: pointer;
   width: 2em;
   height: 2em;
+
   display: inline-block;
-  border-radius: 50%;
-  font-size: 1em;
-  margin-left: 0.5em;
-  text-decoration: none;
-  background: ${props => props.theme.colors.goldSand};
-  color: ${props => props.theme.colors.blueDianne};
-  line-height: 1;
   text-align: center;
   vertical-align: middle;
+
+  margin-left: 0.5em;
+  border: 0;
+  border-radius: 50%;
+
+  font-size: 1em;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+
+  background: ${props => props.theme.colors.goldSand};
+  color: ${props => props.theme.colors.blueDianne};
   transition: background 250ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
