@@ -25,7 +25,6 @@ export default function ItemCardDetails({
   timeLeft,
   openModal,
 }) {
-  console.log('isEditToggled is ' + isEditToggled)
   return (
     <CardContainer
       onClick={isCreateToggled ? null : handleDetailsToggle}

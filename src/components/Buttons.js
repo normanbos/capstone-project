@@ -110,3 +110,25 @@ const LargeButton = styled.div`
   -webkit-appearance: none;
   -moz-appearance: none;
 `
+
+export const ReminderButton = styled.button`
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+  width: 50%;
+  height: 3em;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 0.9em;
+  margin: 0.4em;
+  padding: 0.5em;
+  text-decoration: none;
+  background: ${props => props.theme.colors.goldSand};
+  color: ${props => props.theme.colors.blueDianne};
+  line-height: 1;
+  text-align: center;
+  vertical-align: middle;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+`
