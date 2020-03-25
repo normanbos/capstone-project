@@ -1,21 +1,15 @@
 import React from 'react'
-import { FaEdit, FaTrashAlt } from 'react-icons/fa'
-import { RoundButton } from './Buttons'
+import { DeleteButton, EditButton, MailAlertButton } from './buttons'
 import {
-  CardDetails,
+  CardContainer,
   CardContent,
   CardContentSmall,
-  CardContainer,
+  CardDetails,
   CardHeader,
   CardHeaderNav,
 } from './Card'
 
 export default function ItemCardDetails({
-  title,
-  borrower,
-  contact,
-  borrowdate,
-  duedate,
   deleteItem,
   item,
   isEditToggled,
@@ -23,8 +17,9 @@ export default function ItemCardDetails({
   handleDetailsToggle,
   handleEditToggle,
   isCreateToggled,
+  timeLeft,
+  openModal,
 }) {
-  console.log('isEditToggled is ' + isEditToggled)
   return (
     <CardContainer
       onClick={isCreateToggled ? null : handleDetailsToggle}
@@ -37,14 +32,13 @@ export default function ItemCardDetails({
     >
       <CardDetails>
         <CardHeader>
-          <b>{title}</b>
+          <b>{item.title}</b>
           <CardHeaderNav>
-            <RoundButton onClick={handleEditToggle}>
-              <FaEdit />
-            </RoundButton>
-            <RoundButton onClick={() => deleteItem(item)}>
-              <FaTrashAlt />
-            </RoundButton>
+            {timeLeft.hours <= 0 && timeLeft.days <= 0 && (
+              <MailAlertButton onClick={openModal} />
+            )}
+            <EditButton onClick={handleEditToggle} />
+            <DeleteButton onClick={() => deleteItem(item)} />
           </CardHeaderNav>
         </CardHeader>
 
@@ -52,22 +46,22 @@ export default function ItemCardDetails({
           <small>
             <i>verliehen an </i>
           </small>
-          {borrower}
+          {item.borrower}
         </CardContent>
         <CardContentSmall>
-          <sup>&#40;{contact}&#41;</sup>
+          <sup>&#40;{item.contact}&#41;</sup>
         </CardContentSmall>
         <CardContent>
           <small>
             <i>am </i>
           </small>
-          {borrowdate}
+          {item.borrowdate}
         </CardContent>
         <CardContent>
           <small>
             <i>zurück am </i>
           </small>
-          {duedate}
+          {item.duedate}
         </CardContent>
       </CardDetails>
     </CardContainer>

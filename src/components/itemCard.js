@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
-import ItemCardDetails from './itemCardDetails'
-import ItemCardOverView from './itemCardOverview'
-import ItemCardEdit from './itemCardEdit'
+import React, { useEffect, useState } from 'react'
+import Modal from 'react-modal'
 import { CardWrapper } from './Card'
+import ItemCardDetails from './itemCardDetails'
+import ItemCardEdit from './itemCardEdit'
+import ItemCardOverView from './itemCardOverview'
+import ReminderModal, { StyledModal } from './ReminderModal'
+
+Modal.setAppElement(document.getElementById('root'))
 
 export default function ItemCard({
   title,
@@ -25,21 +29,45 @@ export default function ItemCard({
     duedate,
     id: item.id,
   })
+  const [timeLeft, setTimeLeft] = useState({})
+  const [modalIsOpen, setIsOpen] = useState(false)
+
+  function calculateTimeLeft() {
+    const deadline = new Date(duedate)
+    deadline.setDate(deadline.getDate() + 1)
+    const now = new Date()
+    const difference = deadline - now
+
+    setTimeLeft({
+      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+    })
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      calculateTimeLeft()
+    }, 1000)
+  })
 
   return (
     <CardWrapper>
+      <ReminderModal
+        item={item}
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        shouldCloseOnOverlayClick={false}
+        StyledModal={StyledModal}
+      />
+
       <ItemCardOverView
         handleDetailsToggle={handleDetailsToggle}
         isDetailsToggled={isDetailsToggled}
         setIsDetailsToggled={setIsDetailsToggled}
         isEditToggled={isEditToggled}
-        title={item.title}
-        borrower={item.borrower}
-        contact={item.contact}
-        borrowdate={item.borrowdate}
-        duedate={item.duedate}
         item={item}
         isCreateToggled={isCreateToggled}
+        timeLeft={timeLeft}
       />
 
       <ItemCardDetails
@@ -48,14 +76,11 @@ export default function ItemCard({
         isDetailsToggled={isDetailsToggled}
         setIsDetailsToggled={setIsDetailsToggled}
         isEditToggled={isEditToggled}
-        title={item.title}
-        borrower={item.borrower}
-        contact={item.contact}
-        borrowdate={item.borrowdate}
-        duedate={item.duedate}
         deleteItem={deleteItem}
         item={item}
         isCreateToggled={isCreateToggled}
+        timeLeft={timeLeft}
+        openModal={openModal}
       />
 
       <ItemCardEdit
@@ -68,6 +93,14 @@ export default function ItemCard({
       />
     </CardWrapper>
   )
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
+  function closeModal() {
+    setIsOpen(false)
+  }
 
   function handleDetailsToggle() {
     const toggleTrueFalse = () => setIsDetailsToggled(!isDetailsToggled)

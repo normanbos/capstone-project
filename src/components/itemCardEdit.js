@@ -1,6 +1,5 @@
 import React from 'react'
-import { FaReply, FaSave } from 'react-icons/fa'
-import { RoundButton } from './Buttons'
+import { CancelButton, SaveButton } from './buttons'
 import { CardContainer, CardHeader, CardHeaderNav } from './Card'
 import { CardForm, Input, Label } from './Form'
 
@@ -21,12 +20,8 @@ export default function ItemCardEdit({
       <CardHeader>
         <div></div>
         <CardHeaderNav>
-          <RoundButton onClick={handleEditToggle}>
-            <FaReply />
-          </RoundButton>
-          <RoundButton onClick={handleEdit}>
-            <FaSave />
-          </RoundButton>
+          <CancelButton onClick={handleEditToggle} />
+          <SaveButton onClick={handleEdit} />
         </CardHeaderNav>
       </CardHeader>
 

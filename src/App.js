@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Theme from './components/Theme'
 import { useToggle } from 'react-hooks-lib'
-import { IoIosAddCircle } from 'react-icons/io'
 import styled from 'styled-components'
-import { AppFooter, FooterRoundButton } from './components/AppFooter'
+import { AppFooter } from './components/AppFooter'
+import { FooterButton } from './components/buttons'
 import { FormCreateCard } from './components/formCreateCard'
 import ItemList from './components/itemList'
+import Theme from './components/Theme'
 import { loadFromLocal, saveToLocal } from './utils/utils'
 
 export default function App() {
@@ -33,21 +33,20 @@ export default function App() {
           />
         </ItemListContainer>
         <AppFooter>
-          <FooterRoundButton
+          <FooterButton
             style={{
               display: !isCreateToggled ? 'inline-block' : 'none',
+              cursor: !isCreateToggled ? 'pointer' : 'auto',
             }}
             onClick={handleCreateToggle}
-          >
-            <IoIosAddCircle />
-          </FooterRoundButton>
-          <FooterRoundButton
+          />
+
+          <FooterButton
             style={{
               display: isCreateToggled ? 'inline-block' : 'none',
+              cursor: isCreateToggled ? 'auto' : 'pointer',
             }}
-          >
-            <IoIosAddCircle />
-          </FooterRoundButton>
+          />
         </AppFooter>
       </AppGrid>
     </Theme>
@@ -56,7 +55,6 @@ export default function App() {
     const toggleTrueFalse = () => setCreateToggled(!isCreateToggled)
     toggleTrueFalse()
     window.scroll(0, 0)
-    console.log('isCreateToggled is ' + isCreateToggled)
     toggle()
   }
 
@@ -91,7 +89,6 @@ export default function App() {
 
 const AppGrid = styled.div`
   display: grid;
-  background: ${props => props.theme.colors.blueDianne};
   grid-template-rows: auto 90px;
   position: fixed;
   left: 0;
@@ -99,9 +96,10 @@ const AppGrid = styled.div`
   top: 0;
   bottom: 0;
   height: 100%;
+  background: ${props => props.theme.colors.blueDianne};
 `
 
 const ItemListContainer = styled.section`
-  background: ${props => props.theme.colors.rangoonGreen};
   padding: 20px;
+  background: ${props => props.theme.colors.rangoonGreen};
 `

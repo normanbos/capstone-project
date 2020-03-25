@@ -1,9 +1,9 @@
 import styled from 'styled-components/macro'
 
 export const RoundButton = styled.button`
+  display: inline-block;
   height: 4rem;
   width: 4rem;
-  display: inline-block;
   focus {
     outline: none;
   }
@@ -11,11 +11,11 @@ export const RoundButton = styled.button`
   padding: 0;
   border: none;
   border-radius: 50%;
-  text-decoration: none;
   background: ${props => props.theme.colors.goldSand};
   color: ${props => props.theme.colors.blueDianne};
   font-size: 65px;
   line-height: 1;
+  text-decoration: none;
   cursor: pointer;
   text-align: center;
   transition: background 250ms ease-in-out, transform 150ms ease;

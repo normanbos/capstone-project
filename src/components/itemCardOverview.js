@@ -1,15 +1,14 @@
 import React from 'react'
-import { CardContent, CardContentSmall, CardContainer } from './Card'
-import CountdownTimer from './countdownTimer'
+import { CardContainer, CardContent, CardContentSmall } from './Card'
+import DueTime from './dueTime'
 
 export default function ItemCardOverview({
+  item,
   handleDetailsToggle,
   isDetailsToggled,
   isEditToggled,
-  title,
-  borrower,
-  duedate,
   isCreateToggled,
+  timeLeft,
 }) {
   return (
     <CardContainer
@@ -22,11 +21,12 @@ export default function ItemCardOverview({
       }}
     >
       <CardContent>
-        <b>{title}</b>
+        <b>{item.title}</b>
       </CardContent>
       <CardContentSmall>
         <i>bei: </i>
-        {borrower} • <CountdownTimer itemDueDate={duedate} />
+        {item.borrower} • <i>fällig: </i>
+        <DueTime timeLeft={timeLeft} />
       </CardContentSmall>
     </CardContainer>
   )

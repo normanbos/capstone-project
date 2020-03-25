@@ -30,8 +30,8 @@ export const CardContent = styled.div`
 
 export const CardContentSmall = styled.p`
   margin: 0;
-  font-size: 0.9rem;
   padding: 2px;
+  font-size: 0.9rem;
 `
 
 export const CardContainer = styled.div`
@@ -50,10 +50,10 @@ from {
 
 export const CardWrapper = styled.div`
   margin: 10px;
-  font-size: 1.2rem;
-  color: ${props => props.theme.colors.rangoonGreen};
   padding: 5px;
   border-radius: 12px;
+  font-size: 1.2rem;
+  color: ${props => props.theme.colors.rangoonGreen};
   background-color: ${props => props.theme.colors.tradewind};
   animation-name: ${cardCreationAnimation};
   animation-duration: 4s;
@@ -61,9 +61,9 @@ export const CardWrapper = styled.div`
 
 export const CreateCardContainer = styled.div`
   margin: 10px;
+  padding: 5px;
+  border-radius: 12px;
   font-size: 1.2rem;
   color: ${props => props.theme.colors.rangoonGreen};
   background: ${props => props.theme.colors.rawSienna};
-  padding: 5px;
-  border-radius: 12px;
 `
