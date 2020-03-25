@@ -10,11 +10,6 @@ import {
 } from './Card'
 
 export default function ItemCardDetails({
-  title,
-  borrower,
-  contact,
-  borrowdate,
-  duedate,
   deleteItem,
   item,
   isEditToggled,
@@ -37,7 +32,7 @@ export default function ItemCardDetails({
     >
       <CardDetails>
         <CardHeader>
-          <b>{title}</b>
+          <b>{item.title}</b>
           <CardHeaderNav>
             {timeLeft.hours <= 0 && timeLeft.days <= 0 && (
               <MailAlertButton onClick={openModal} />
@@ -51,22 +46,22 @@ export default function ItemCardDetails({
           <small>
             <i>verliehen an </i>
           </small>
-          {borrower}
+          {item.borrower}
         </CardContent>
         <CardContentSmall>
-          <sup>&#40;{contact}&#41;</sup>
+          <sup>&#40;{item.contact}&#41;</sup>
         </CardContentSmall>
         <CardContent>
           <small>
             <i>am </i>
           </small>
-          {borrowdate}
+          {item.borrowdate}
         </CardContent>
         <CardContent>
           <small>
             <i>zurück am </i>
           </small>
-          {duedate}
+          {item.duedate}
         </CardContent>
       </CardDetails>
     </CardContainer>

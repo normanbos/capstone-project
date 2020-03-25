@@ -3,11 +3,10 @@ import { CardContainer, CardContent, CardContentSmall } from './Card'
 import DueTime from './dueTime'
 
 export default function ItemCardOverview({
+  item,
   handleDetailsToggle,
   isDetailsToggled,
   isEditToggled,
-  title,
-  borrower,
   isCreateToggled,
   timeLeft,
 }) {
@@ -22,11 +21,11 @@ export default function ItemCardOverview({
       }}
     >
       <CardContent>
-        <b>{title}</b>
+        <b>{item.title}</b>
       </CardContent>
       <CardContentSmall>
         <i>bei: </i>
-        {borrower} • <i>fällig: </i>
+        {item.borrower} • <i>fällig: </i>
         <DueTime timeLeft={timeLeft} />
       </CardContentSmall>
     </CardContainer>
