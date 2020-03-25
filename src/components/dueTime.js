@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default function DueTimer({ timeLeft }) {
+export default function DueTime({ timeLeft }) {
   return (
     <>
       {timeLeft.days > 0 && <span>{timeLeft.days} Tage und </span>}

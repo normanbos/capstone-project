@@ -1,6 +1,6 @@
 import React from 'react'
 import { CardContainer, CardContent, CardContentSmall } from './Card'
-import DueTimer from './dueTimer'
+import DueTime from './dueTime'
 
 export default function ItemCardOverview({
   handleDetailsToggle,
@@ -27,7 +27,7 @@ export default function ItemCardOverview({
       <CardContentSmall>
         <i>bei: </i>
         {borrower} • <i>fällig: </i>
-        <DueTimer timeLeft={timeLeft} />
+        <DueTime timeLeft={timeLeft} />
       </CardContentSmall>
     </CardContainer>
   )

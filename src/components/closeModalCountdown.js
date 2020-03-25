@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { ReminderButton } from './buttons'
+import useCountdown from '../hooks/useCountdown'
 
 export default function CloseModalCountdown({ closeModal }) {
-  const [counter, setCounter] = useState(3)
-
-  useEffect(() => {
-    const timer =
-      counter > 0 && setInterval(() => setCounter(counter - 1), 1000)
-    return () => clearInterval(timer)
-  }, [counter])
-
-  counter === 0 && closeModal()
+  const counter = useCountdown(3, closeModal)
 
   return <ReminderButton>[schließt in {counter}]</ReminderButton>
 }

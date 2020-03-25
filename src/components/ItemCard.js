@@ -54,8 +54,6 @@ export default function ItemCard({
     setIsOpen(true)
   }
 
-  function afterOpenModal() {}
-
   function closeModal() {
     setIsOpen(false)
   }
@@ -64,7 +62,6 @@ export default function ItemCard({
     <CardWrapper>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         shouldCloseOnOverlayClick={false}
         style={StyledModal}

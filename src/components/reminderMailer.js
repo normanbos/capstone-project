@@ -20,10 +20,7 @@ export function ReminderMailer({ item, borrower, contact, closeModal }) {
     event.preventDefault()
 
     setState({
-      name: borrower,
-      message: `Hallo ${borrower}, bitte denk daran, mir folgenden Gegenstand wieder
-          zurück zu geben: ${item}`,
-      email: contact,
+      ...state,
       sent: false,
       buttonText: '...wird gesendet',
     })
@@ -39,16 +36,19 @@ export function ReminderMailer({ item, borrower, contact, closeModal }) {
       .then(res => {
         setStartCountdown(true)
         setState({
-          name: borrower,
-          message: `Hallo ${borrower}, bitte denk daran, mir folgenden Gegenstand wieder
-          zurück zu geben: ${item}`,
-          email: contact,
+          ...state,
           sent: true,
           buttonText: 'Erinnerung gesendet',
         })
       })
       .catch(() => {
         console.log('Erinnerung nicht gesendet')
+        setStartCountdown(true)
+        setState({
+          ...state,
+          sent: false,
+          buttonText: 'Etwas is schiefgelaufen',
+        })
       })
   }
 
