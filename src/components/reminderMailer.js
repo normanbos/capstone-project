@@ -5,7 +5,13 @@ import { ReminderButton } from './buttons'
 import { CardFooter } from './Card'
 import CloseModalCountdown from './closeModalCountdown'
 
-export function ReminderMailer({ item, borrower, contact, closeModal }) {
+export function ReminderMailer({
+  item,
+  borrower,
+  contact,
+  closeModal,
+  mailCreds,
+}) {
   const [startCountdown, setStartCountdown] = useState(false)
   const [state, setState] = useState({
     name: borrower,
@@ -29,6 +35,10 @@ export function ReminderMailer({ item, borrower, contact, closeModal }) {
       name: state.name,
       email: state.email,
       message: state.message,
+      host: mailCreds.host,
+      port: mailCreds.port,
+      user: mailCreds.user,
+      pass: mailCreds.pass,
     }
 
     axios

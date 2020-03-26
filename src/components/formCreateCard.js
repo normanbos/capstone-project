@@ -13,7 +13,7 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
     duedate: '',
     id: v4(),
   })
-
+  console.log(itemState)
   return (
     <CreateCardContainer>
       <CardHeader>

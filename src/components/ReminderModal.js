@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ReminderMailer } from './reminderMailer'
 import Modal from 'react-modal'
-
-//Modal.setAppElement(document.getElementById('root'))
 
 export default function ReminderModal({
   item,
   modalIsOpen,
   closeModal,
   StyledModal,
+  mailCreds,
 }) {
   return (
     <Modal
@@ -27,6 +26,7 @@ export default function ReminderModal({
           borrower={item.borrower}
           contact={item.contact}
           closeModal={closeModal}
+          mailCreds={mailCreds}
         />
       </div>
     </Modal>

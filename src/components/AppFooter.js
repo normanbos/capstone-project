@@ -1,5 +1,19 @@
 import styled from 'styled-components/macro'
 
+export const AppFooter = styled.footer`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: relative;
+  text-align: center;
+  width: 100%;
+`
+
+export const FooterGridItem = styled.div`
+  margin-right: 1em;
+  align-self: center;
+  justify-self: end;
+`
+
 export const RoundButton = styled.button`
   display: inline-block;
   height: 4rem;
@@ -21,12 +35,6 @@ export const RoundButton = styled.button`
   transition: background 250ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
-`
-
-export const AppFooter = styled.footer`
-  position: relative;
-  text-align: center;
-  width: 100%;
 `
 
 export const FooterRoundButton = styled.div`

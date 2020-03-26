@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaEdit, FaReply, FaSave, FaTrashAlt } from 'react-icons/fa'
-import { IoIosAddCircle } from 'react-icons/io'
+import { IoIosAddCircle, IoMdSettings } from 'react-icons/io'
+import { MdSettings } from 'react-icons/md'
 import styled from 'styled-components/macro'
 import { ReactComponent as Icon } from '../img/mailalertplaceholder.svg'
 
@@ -20,6 +21,14 @@ export function MailAlertButton({ onClick }) {
         strokeWidth="0"
         name="mailalert"
       />
+    </Button>
+  )
+}
+
+export function SettingsButton({ onClick }) {
+  return (
+    <Button onClick={onClick}>
+      <MdSettings />
     </Button>
   )
 }

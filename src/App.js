@@ -1,20 +1,37 @@
 import React, { useState } from 'react'
 import { useToggle } from 'react-hooks-lib'
 import styled from 'styled-components'
-import { AppFooter } from './components/AppFooter'
-import { FooterButton } from './components/buttons'
+import { AppFooter, FooterGridItem } from './components/AppFooter'
+import { FooterButton, SettingsButton } from './components/buttons'
 import { FormCreateCard } from './components/formCreateCard'
+import Modal from 'react-modal'
+import MailCredentialsModal, {
+  StyledModal,
+} from './components/MailCredentialsModal'
 import ItemList from './components/itemList'
 import Theme from './components/Theme'
 import { loadFromLocal, saveToLocal } from './utils/utils'
 
+Modal.setAppElement(document.getElementById('root'))
+
 export default function App() {
   const [itemData, setItemData] = useState(loadFromLocal('itemData') || [])
+  const [mailCreds, setMailCreds] = useState(loadFromLocal('mailCreds') || {})
   const { on, toggle } = useToggle(false)
   const [isCreateToggled, setCreateToggled] = useState(false)
+  const [modalIsOpen, setIsOpen] = useState(false)
 
   return (
     <Theme>
+      <MailCredentialsModal
+        mailCreds={mailCreds}
+        setMailCreds={setMailCreds}
+        modalIsOpen={modalIsOpen}
+        closeModal={closeModal}
+        shouldCloseOnOverlayClick={false}
+        StyledModal={StyledModal}
+        saveCreds={saveCreds}
+      />
       <AppGrid>
         <ItemListContainer
           style={{ overflowY: isCreateToggled ? 'hidden' : 'auto' }}
@@ -30,32 +47,54 @@ export default function App() {
             items={itemData}
             deleteItem={deleteItem}
             editItem={editItem}
+            mailCreds={mailCreds}
           />
         </ItemListContainer>
         <AppFooter>
-          <FooterButton
-            style={{
-              display: !isCreateToggled ? 'inline-block' : 'none',
-              cursor: !isCreateToggled ? 'pointer' : 'auto',
-            }}
-            onClick={handleCreateToggle}
-          />
+          <FooterGridItem />
+          <div>
+            <FooterButton
+              style={{
+                display: !isCreateToggled ? 'inline-block' : 'none',
+                cursor: !isCreateToggled ? 'pointer' : 'auto',
+              }}
+              onClick={handleCreateToggle}
+            />
 
-          <FooterButton
-            style={{
-              display: isCreateToggled ? 'inline-block' : 'none',
-              cursor: isCreateToggled ? 'auto' : 'pointer',
-            }}
-          />
+            <FooterButton
+              style={{
+                display: isCreateToggled ? 'inline-block' : 'none',
+                cursor: isCreateToggled ? 'auto' : 'pointer',
+              }}
+            />
+          </div>
+          <FooterGridItem>
+            <SettingsButton onClick={openModal} />
+          </FooterGridItem>
         </AppFooter>
       </AppGrid>
     </Theme>
   )
+
+  function openModal() {
+    setIsOpen(true)
+  }
+
+  function closeModal() {
+    setIsOpen(false)
+  }
+
   function handleCreateToggle() {
     const toggleTrueFalse = () => setCreateToggled(!isCreateToggled)
     toggleTrueFalse()
     window.scroll(0, 0)
     toggle()
+  }
+
+  function saveCreds(item) {
+    const newCreds = item
+    saveToLocal('mailCreds', newCreds)
+    closeModal()
   }
 
   function addItem(item) {
