@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { v4 } from 'uuid'
 import { CancelButton, SaveButton } from './buttons'
 import { CardHeader, CardHeaderNav, CreateCardContainer } from './Card'
-import { CardForm, Input, Label } from './Form'
+import { CardForm, Input, FormLabel } from './Form'
 
 export function FormCreateCard({ onSubmit, cancelHandle }) {
   const [itemState, setItemState] = useState({
@@ -13,7 +13,7 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
     duedate: '',
     id: v4(),
   })
-  console.log(itemState)
+
   return (
     <CreateCardContainer>
       <CardHeader>
@@ -24,11 +24,7 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
         </CardHeaderNav>
       </CardHeader>
       <CardForm id="cardForm" onSubmit={handleSubmit}>
-        <Label htmlFor="title">
-          <small>
-            <i>Gegenstand</i>
-          </small>
-        </Label>
+        <FormLabel htmlFor="title" content="Gegenstand" />
         <Input
           autoFocus
           type="text"
@@ -38,11 +34,7 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="borrower">
-          <small>
-            <i>verliehen an</i>
-          </small>
-        </Label>
+        <FormLabel htmlFor="borrower" content="verliehen an" />
         <Input
           type="text"
           name="borrower"
@@ -51,11 +43,7 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="contact">
-          <small>
-            <i>Kontakt</i>
-          </small>
-        </Label>
+        <FormLabel htmlFor="contact" content="Kontakt" />
         <Input
           type="email"
           name="contact"
@@ -65,11 +53,7 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="borrowdate">
-          <small>
-            <i>am</i>
-          </small>
-        </Label>
+        <FormLabel htmlFor="borrowdate" content="am" />
         <Input
           type="date"
           name="borrowdate"
@@ -79,11 +63,7 @@ export function FormCreateCard({ onSubmit, cancelHandle }) {
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="duedate">
-          <small>
-            <i>zurück am</i>
-          </small>
-        </Label>
+        <FormLabel htmlFor="duedate" content="zurück am" />
         <Input
           type="date"
           name="duedate"

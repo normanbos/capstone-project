@@ -5,9 +5,7 @@ import { AppFooter, FooterGridItem } from './components/AppFooter'
 import { FooterButton, SettingsButton } from './components/buttons'
 import { FormCreateCard } from './components/formCreateCard'
 import Modal from 'react-modal'
-import MailCredentialsModal, {
-  StyledModal,
-} from './components/MailCredentialsModal'
+import MailCredentialsModal from './components/MailCredentialsModal'
 import ItemList from './components/itemList'
 import Theme from './components/Theme'
 import { loadFromLocal, saveToLocal } from './utils/utils'
@@ -29,7 +27,6 @@ export default function App() {
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
         shouldCloseOnOverlayClick={false}
-        StyledModal={StyledModal}
         saveCreds={saveCreds}
       />
       <AppGrid>

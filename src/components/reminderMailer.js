@@ -5,19 +5,13 @@ import { ReminderButton } from './buttons'
 import { CardFooter } from './Card'
 import CloseModalCountdown from './closeModalCountdown'
 
-export function ReminderMailer({
-  item,
-  borrower,
-  contact,
-  closeModal,
-  mailCreds,
-}) {
+export function ReminderMailer({ item, closeModal, mailCreds }) {
   const [startCountdown, setStartCountdown] = useState(false)
   const [state, setState] = useState({
-    name: borrower,
-    message: `Hallo ${borrower}, bitte denk daran, mir folgenden Gegenstand wieder
-    zurück zu geben: ${item}`,
-    email: contact,
+    name: item.borrower,
+    message: `Hallo ${item.borrower}, bitte denk daran, mir folgenden Gegenstand wieder
+    zurück zu geben: ${item.title}`,
+    email: item.contact,
     sent: false,
     buttonText: 'Erinnerung senden',
   })

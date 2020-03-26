@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from 'react-modal'
 import { CardContainer, CardHeader, CardHeaderNav } from './Card'
 import { CancelButton, SaveButton } from './buttons'
-import { CardForm, Input, Label } from './Form'
+import { CardForm, Input, FormLabel } from './Form'
 
 export default function MailCredentialsModal({
   setMailCreds,
@@ -10,10 +10,7 @@ export default function MailCredentialsModal({
   saveCreds,
   modalIsOpen,
   closeModal,
-  StyledModal,
 }) {
-  console.log(mailCreds)
-
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -34,11 +31,7 @@ export default function MailCredentialsModal({
           E-Mail-Zugangsdaten hier ein:
         </p>
         <CardForm id="cardForm">
-          <Label htmlFor="host">
-            <small>
-              <i>SMTP-Host</i>
-            </small>
-          </Label>
+          <FormLabel htmlFor="host" content="SMTP-Host" />
           <Input
             type="text"
             name="host"
@@ -47,11 +40,7 @@ export default function MailCredentialsModal({
             onChange={handleItemChange}
           />
 
-          <Label htmlFor="port">
-            <small>
-              <i>Port</i>
-            </small>
-          </Label>
+          <FormLabel htmlFor="port" content="Port" />
           <Input
             type="text"
             name="port"
@@ -60,11 +49,7 @@ export default function MailCredentialsModal({
             onChange={handleItemChange}
           />
 
-          <Label htmlFor="username">
-            <small>
-              <i>Benutzername</i>
-            </small>
-          </Label>
+          <FormLabel htmlFor="username" content="Benutzername" />
           <Input
             type="text"
             name="user"
@@ -73,11 +58,7 @@ export default function MailCredentialsModal({
             onChange={handleItemChange}
           />
 
-          <Label htmlFor="password">
-            <small>
-              <i>Passwort</i>
-            </small>
-          </Label>
+          <FormLabel htmlFor="password" content="Passwort" />
           <Input
             type="pass"
             name="pass"

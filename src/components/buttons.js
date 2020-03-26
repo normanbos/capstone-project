@@ -26,18 +26,9 @@ export function MailAlertButton({ onClick }) {
 
 export function SettingsButton({ onClick }) {
   return (
-    <Button
-      onClick={onClick}
-      css={`
-        font-size: 1.5em;
-        width: 1.5em;
-        height: 1.5em;
-        padding-left: 0.25em;
-        padding-top: 0.15em;
-      `}
-    >
+    <SmallFooterButton onClick={onClick}>
       <IoMdSettings />
-    </Button>
+    </SmallFooterButton>
   )
 }
 
@@ -67,7 +58,7 @@ export function CancelButton({ onClick }) {
 
 export function SaveButton({ onClick }) {
   return (
-    <Button name="save" onClick={onClick}>
+    <Button onClick={onClick}>
       <FaSave />
     </Button>
   )
@@ -75,7 +66,7 @@ export function SaveButton({ onClick }) {
 
 export function FooterButton({ onClick, style }) {
   return (
-    <LargeButton style={style} name="footerButton" onClick={onClick}>
+    <LargeButton style={style} onClick={onClick}>
       <IoIosAddCircle />
     </LargeButton>
   )
@@ -120,6 +111,32 @@ const LargeButton = styled.div`
   font-size: 3.9em;
   line-height: 1;
   text-decoration: none;
+
+  background: ${props => props.theme.colors.goldSand};
+  color: ${props => props.theme.colors.blueDianne};
+  transition: background 250ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+`
+
+const SmallFooterButton = styled.button`
+  width: 1.5em;
+  height: 1.5em;
+
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+
+  margin-left: 0.5em;
+  padding-left: 0.25em;
+  padding-top: 0.15em;
+  border: 0;
+  border-radius: 50%;
+
+  font-size: 1.5em;
+  line-height: 0.8;
+  text-decoration: none;
+  cursor: pointer;
 
   background: ${props => props.theme.colors.goldSand};
   color: ${props => props.theme.colors.blueDianne};

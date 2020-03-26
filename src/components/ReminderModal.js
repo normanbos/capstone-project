@@ -6,7 +6,6 @@ export default function ReminderModal({
   item,
   modalIsOpen,
   closeModal,
-  StyledModal,
   mailCreds,
 }) {
   return (
@@ -22,9 +21,7 @@ export default function ReminderModal({
           <small>&#40;{item.contact}&#41;</small>:
         </p>
         <ReminderMailer
-          item={item.title}
-          borrower={item.borrower}
-          contact={item.contact}
+          item={item}
           closeModal={closeModal}
           mailCreds={mailCreds}
         />
@@ -33,7 +30,7 @@ export default function ReminderModal({
   )
 }
 
-export const StyledModal = {
+const StyledModal = {
   content: {
     display: 'grid',
     gridTemplateRows: 'auto 70px',

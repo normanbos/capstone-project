@@ -4,7 +4,7 @@ import { CardWrapper } from './Card'
 import ItemCardDetails from './itemCardDetails'
 import ItemCardEdit from './itemCardEdit'
 import ItemCardOverView from './itemCardOverview'
-import ReminderModal, { StyledModal } from './ReminderModal'
+import ReminderModal from './ReminderModal'
 
 Modal.setAppElement(document.getElementById('root'))
 
@@ -53,7 +53,6 @@ export default function ItemCard({
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
         shouldCloseOnOverlayClick={false}
-        StyledModal={StyledModal}
         mailCreds={mailCreds}
       />
 
