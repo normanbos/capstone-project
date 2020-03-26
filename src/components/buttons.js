@@ -1,7 +1,6 @@
 import React from 'react'
 import { FaEdit, FaReply, FaSave, FaTrashAlt } from 'react-icons/fa'
 import { IoIosAddCircle, IoMdSettings } from 'react-icons/io'
-import { MdSettings } from 'react-icons/md'
 import styled from 'styled-components/macro'
 import { ReactComponent as Icon } from '../img/mailalertplaceholder.svg'
 
@@ -27,8 +26,17 @@ export function MailAlertButton({ onClick }) {
 
 export function SettingsButton({ onClick }) {
   return (
-    <Button onClick={onClick}>
-      <MdSettings />
+    <Button
+      onClick={onClick}
+      css={`
+        font-size: 1.5em;
+        width: 1.5em;
+        height: 1.5em;
+        padding-left: 0.25em;
+        padding-top: 0.15em;
+      `}
+    >
+      <IoMdSettings />
     </Button>
   )
 }
@@ -86,7 +94,7 @@ const Button = styled.button`
   border-radius: 50%;
 
   font-size: 1em;
-  line-height: 1;
+  line-height: 0.8;
   text-decoration: none;
   cursor: pointer;
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Modal from 'react-modal'
 import { CardContainer, CardHeader, CardHeaderNav } from './Card'
 import { CancelButton, SaveButton } from './buttons'
