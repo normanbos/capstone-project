@@ -1,4 +1,15 @@
 import styled from 'styled-components/macro'
+import React from 'react'
+
+export function FormLabel({ htmlFor, content }) {
+  return (
+    <Label htmlFor={htmlFor}>
+      <small>
+        <i>{content}</i>
+      </small>
+    </Label>
+  )
+}
 
 export const CardForm = styled.form`
   display: grid;

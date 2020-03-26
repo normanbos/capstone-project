@@ -4,36 +4,32 @@ import { CardWrapper } from './Card'
 import ItemCardDetails from './itemCardDetails'
 import ItemCardEdit from './itemCardEdit'
 import ItemCardOverView from './itemCardOverview'
-import ReminderModal, { StyledModal } from './ReminderModal'
+import ReminderModal from './ReminderModal'
 
 Modal.setAppElement(document.getElementById('root'))
 
 export default function ItemCard({
-  title,
-  borrower,
-  contact,
-  borrowdate,
-  duedate,
   deleteItem,
   item,
   editItem,
   isCreateToggled,
+  mailCreds,
 }) {
   const [isDetailsToggled, setIsDetailsToggled] = useState(false)
   const [isEditToggled, setIsEditToggled] = useState(false)
   const [itemState, setItemState] = useState({
-    title,
-    borrower,
-    contact,
-    borrowdate,
-    duedate,
+    title: item.title,
+    borrower: item.borrower,
+    contact: item.contact,
+    borrowdate: item.borrowdate,
+    duedate: item.duedate,
     id: item.id,
   })
   const [timeLeft, setTimeLeft] = useState({})
   const [modalIsOpen, setIsOpen] = useState(false)
 
   function calculateTimeLeft() {
-    const deadline = new Date(duedate)
+    const deadline = new Date(item.duedate)
     deadline.setDate(deadline.getDate() + 1)
     const now = new Date()
     const difference = deadline - now
@@ -57,7 +53,7 @@ export default function ItemCard({
         modalIsOpen={modalIsOpen}
         closeModal={closeModal}
         shouldCloseOnOverlayClick={false}
-        StyledModal={StyledModal}
+        mailCreds={mailCreds}
       />
 
       <ItemCardOverView

@@ -6,21 +6,18 @@ export default function ItemList({
   deleteItem,
   editItem,
   isCreateToggled,
+  mailCreds,
 }) {
   return (
     <>
       {items.map(item => (
         <ItemCard
-          title={item.title}
-          borrower={item.borrower}
-          contact={item.contact}
-          borrowdate={item.borrowdate}
-          duedate={item.duedate}
           key={item.id}
           deleteItem={deleteItem}
           editItem={editItem}
           item={item}
           isCreateToggled={isCreateToggled}
+          mailCreds={mailCreds}
         ></ItemCard>
       ))}
     </>

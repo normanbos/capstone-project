@@ -27,11 +27,11 @@ app.post('/api/v1', (req, res) => {
   var data = req.body
 
   var smtpTransport = nodemailer.createTransport({
-    host: 'smtp.mailtrap.io',
-    port: 2525,
+    host: data.host,
+    port: data.port,
     auth: {
-      user: '2dcd82b46f20b2',
-      pass: '71777e5b8854c6',
+      user: data.user,
+      pass: data.pass,
     },
   })
 

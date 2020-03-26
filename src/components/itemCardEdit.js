@@ -1,7 +1,7 @@
 import React from 'react'
 import { CancelButton, SaveButton } from './buttons'
 import { CardContainer, CardHeader, CardHeaderNav } from './Card'
-import { CardForm, Input, Label } from './Form'
+import { CardForm, Input, FormLabel } from './Form'
 
 export default function ItemCardEdit({
   itemState,
@@ -26,11 +26,7 @@ export default function ItemCardEdit({
       </CardHeader>
 
       <CardForm>
-        <Label htmlFor="title">
-          <small>
-            <i>Gegenstand</i>
-          </small>
-        </Label>
+        <FormLabel htmlFor="title" content="Gegenstand" />
         <Input
           autoFocus
           type="text"
@@ -40,11 +36,7 @@ export default function ItemCardEdit({
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="borrower">
-          <small>
-            <i>verliehen an</i>
-          </small>
-        </Label>
+        <FormLabel htmlFor="borrower" content="verliehen an" />
         <Input
           type="text"
           name="borrower"
@@ -53,11 +45,7 @@ export default function ItemCardEdit({
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="contact">
-          <small>
-            <i>Kontakt</i>
-          </small>
-        </Label>
+        <FormLabel htmlFor="contact" content="Kontakt" />
         <Input
           type="email"
           name="contact"
@@ -67,11 +55,7 @@ export default function ItemCardEdit({
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="borrowdate">
-          <small>
-            <i>am</i>
-          </small>
-        </Label>
+        <FormLabel htmlFor="borrowdate" content="am" />
         <Input
           type="date"
           name="borrowdate"
@@ -81,11 +65,7 @@ export default function ItemCardEdit({
           onChange={handleItemChange}
         />
 
-        <Label htmlFor="duedate">
-          <small>
-            <i>zurück am</i>
-          </small>
-        </Label>
+        <FormLabel htmlFor="duedate" content="zurück am" />
         <Input
           type="date"
           name="duedate"

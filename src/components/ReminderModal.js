@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { ReminderMailer } from './reminderMailer'
 import Modal from 'react-modal'
-
-//Modal.setAppElement(document.getElementById('root'))
 
 export default function ReminderModal({
   item,
   modalIsOpen,
   closeModal,
-  StyledModal,
+  mailCreds,
 }) {
   return (
     <Modal
@@ -23,17 +21,16 @@ export default function ReminderModal({
           <small>&#40;{item.contact}&#41;</small>:
         </p>
         <ReminderMailer
-          item={item.title}
-          borrower={item.borrower}
-          contact={item.contact}
+          item={item}
           closeModal={closeModal}
+          mailCreds={mailCreds}
         />
       </div>
     </Modal>
   )
 }
 
-export const StyledModal = {
+const StyledModal = {
   content: {
     display: 'grid',
     gridTemplateRows: 'auto 70px',
