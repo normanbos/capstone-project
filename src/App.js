@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { useToggle } from 'react-hooks-lib'
 import styled from 'styled-components'
 import { AppFooter, FooterGridItem } from './components/AppFooter'
-import { FooterButton, SettingsButton } from './components/buttons'
-import { FormCreateCard } from './components/formCreateCard'
+import { FooterButton, SettingsButton } from './components/Buttons'
+import { FormCreateCard } from './components/FormCreateCard'
 import Modal from 'react-modal'
 import MailCredentialsModal from './components/MailCredentialsModal'
-import ItemList from './components/itemList'
+import ItemList from './components/ItemList'
 import Theme from './components/Theme'
 import { loadFromLocal, saveToLocal } from './utils/utils'
 
@@ -132,10 +132,10 @@ const AppGrid = styled.div`
   top: 0;
   bottom: 0;
   height: 100%;
-  background: ${props => props.theme.colors.blueDianne};
+  background: ${(props) => props.theme.colors.blueDianne};
 `
 
 const ItemListContainer = styled.section`
   padding: 20px;
-  background: ${props => props.theme.colors.rangoonGreen};
+  background: ${(props) => props.theme.colors.rangoonGreen};
 `

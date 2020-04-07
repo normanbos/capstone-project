@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
 import { CardContainer, CardHeader, CardHeaderNav } from './Card'
-import { CancelButton, SaveButton } from './buttons'
+import { CancelButton, SaveButton } from './Buttons'
 import { CardForm, Input, FormLabel } from './Form'
 
 export default function MailCredentialsModal({

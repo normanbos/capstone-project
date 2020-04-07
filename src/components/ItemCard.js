@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Modal from 'react-modal'
 import { CardWrapper } from './Card'
-import ItemCardDetails from './itemCardDetails'
-import ItemCardEdit from './itemCardEdit'
-import ItemCardOverView from './itemCardOverview'
+import ItemCardDetails from './ItemCardDetails'
+import ItemCardEdit from './ItemCardEdit'
+import ItemCardOverView from './ItemCardOverview'
 import ReminderModal from './ReminderModal'
 
 Modal.setAppElement(document.getElementById('root'))

@@ -1,5 +1,5 @@
 import React from 'react'
-import { DeleteButton, EditButton, MailAlertButton } from './buttons'
+import { DeleteButton, EditButton, MailAlertButton } from './Buttons'
 import {
   CardContainer,
   CardContent,

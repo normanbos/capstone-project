@@ -1,5 +1,5 @@
 import React from 'react'
-import { CancelButton, SaveButton } from './buttons'
+import { CancelButton, SaveButton } from './Buttons'
 import { CardContainer, CardHeader, CardHeaderNav } from './Card'
 import { CardForm, Input, FormLabel } from './Form'
 

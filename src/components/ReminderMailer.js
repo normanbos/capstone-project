@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import styled from 'styled-components/macro'
-import { ReminderButton } from './buttons'
+import { ReminderButton } from './Buttons'
 import { CardFooter } from './Card'
-import CloseModalCountdown from './closeModalCountdown'
+import CloseModalCountdown from './CloseModalCountdown'
 
 export function ReminderMailer({ item, closeModal, mailCreds }) {
   const [startCountdown, setStartCountdown] = useState(false)
@@ -37,7 +37,7 @@ export function ReminderMailer({ item, closeModal, mailCreds }) {
 
     axios
       .post('/api/v1', data)
-      .then(res => {
+      .then((res) => {
         setStartCountdown(true)
         setState({
           ...state,

@@ -1,6 +1,6 @@
 import React from 'react'
 import { CardContainer, CardContent, CardContentSmall } from './Card'
-import DueTime from './dueTime'
+import DueTime from './DueTime'
 
 export default function ItemCardOverview({
   item,

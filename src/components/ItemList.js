@@ -1,5 +1,5 @@
 import React from 'react'
-import ItemCard from './itemCard'
+import ItemCard from './ItemCard'
 
 export default function ItemList({
   items,
@@ -10,7 +10,7 @@ export default function ItemList({
 }) {
   return (
     <>
-      {items.map(item => (
+      {items.map((item) => (
         <ItemCard
           key={item.id}
           deleteItem={deleteItem}

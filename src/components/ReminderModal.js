@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReminderMailer } from './reminderMailer'
+import { ReminderMailer } from './ReminderMailer'
 import Modal from 'react-modal'
 
 export default function ReminderModal({
