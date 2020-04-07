@@ -28,7 +28,7 @@ It helps you keep track of all the things you lent to your friends and lets you 
 ### Setup
 
 ```shell
-git@github.com:normanbos/lendmethis.git
+git clone git@github.com:normanbos/lendmethis.git
 
 cd lendmethis
 npm install
@@ -39,8 +39,7 @@ npm install
 You can run the app in development mode with
 
 ```shell
-npm start
-npm server
+npm run-all
 ```
 
 Open <http://localhost:3000> to view it in the browser. Switch your browser to responsive mode as this app was designed for mobile devices in mind.
